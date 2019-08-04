@@ -1,29 +1,31 @@
 (function() {
 
-// this works. keep for now
-// fetch(`http://localhost:3000/art-deco`)
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(response) {
-//     parseData(response)
-//     console.log("JSON.stringify(response)", JSON.stringify(response));
-//   })
-//   .then(function(response) {
-//   });
+  document.getElementById("button").addEventListener("click", lookupForageThing);
 
-axios.get('http://localhost:3000/art-deco', {
-    params: {
-      ID: 12345
-    }
-  })
-  .then(function (response) {
-    console.log("console.log response:", response);
-    parseData(response)
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  // The mega function that does it all when user clicks the submit button
+  function lookupForageThing() {
+
+
+  //===============================
+  // The API call to Open Weather
+  //===============================
+  // This axios call is made to the Open Weather Map API,
+  // using the user's inputted zip.
+  function axiosCall(){
+    axios.get('http://localhost:3000/art-deco', {
+          params: {
+          ID: 12345
+      }
+    })
+    .then(function (response) {
+      console.log("console.log response:", response);
+      parseData(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  axiosCall();
 
 
 
@@ -59,7 +61,7 @@ axios.get('http://localhost:3000/art-deco', {
 
 
 
-
+}
 
 
 
