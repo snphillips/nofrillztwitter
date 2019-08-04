@@ -51,11 +51,17 @@ app.get('/', (req, res, next) => {
 // ==================================
 // Get All - First an API that
 // ==================================
-app.get('/:value', (req, res, next) => {
+app.get('/:forageThing', (req, res, next) => {
 
-  const { value } = req.params;
+  const { forageThing } = req.params;
 
-  axios.get(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=${process.env.COOPER_API_TOKEN}&has_images=1&per_page=1&tag=${value}`)
+  axios.get(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=${process.env.COOPER_API_TOKEN}&has_images=1&per_page=1&tag=${forageThing}`, {
+          params: {
+          API_SECRET_KEY: `${process.env.API_SECRET_KEY}`,
+          API_KEY: `${process.env.API_KEY}`,
+          ACCESS_TOKEN: `${process.env.ACCESS_TOKEN}`,
+          ACEESS_TOKEN_SECRET: `${process.env.ACEESS_TOKEN_SECRET}`
+      }})
   .then((response) => {
     console.log("response:", response.data )
 

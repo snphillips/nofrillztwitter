@@ -5,27 +5,29 @@
   // The mega function that does it all when user clicks the submit button
   function lookupForageThing() {
 
+  // Whatever value the user selects from dropdown menu
+  var forageThing = document.getElementById("forage-thing").value
+
 
   //===============================
-  // The API call to Open Weather
+  // The axios call to the server
   //===============================
   // This axios call is made to the Open Weather Map API,
   // using the user's inputted zip.
-  function axiosCall(){
-    axios.get('http://localhost:3000/art-deco', {
-          params: {
-          ID: 12345
-      }
-    })
+  function axiosCall(forageThing){
+
+    console.log("forageThing is:", forageThing)
+
+    axios.get(`http://localhost:3000/${forageThing}`)
     .then(function (response) {
-      console.log("console.log response:", response);
+      console.log("response:", response);
       parseData(response)
     })
     .catch(function (error) {
       console.log(error);
     });
   }
-  axiosCall();
+  axiosCall(forageThing);
 
 
 
@@ -37,7 +39,7 @@
    function parseData(response){
 
      document.getElementById('number-of-tweets').innerHTML = `${response.data.objects[0].decade} `
-     document.getElementById('forage-thing').innerHTML = `${response.data.objects[0].type} `
+     document.getElementById('forage-thing-description').innerHTML = `${response.data.objects[0].type} `
      document.getElementById('location').innerHTML = `${response.data.objects[0]["woe:country_name"]}`
      showResultParagraph();
    }
