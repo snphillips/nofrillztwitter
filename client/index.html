@@ -29,13 +29,28 @@
       <!-- Loading Spinner -->
       <div id="loader"></div>
 
+      <p>What would you like to forage?</p>
+      <!-- Form -->
+      <form class="form"
+            action="/action_page.php">
+
+      <select name="forage-thing">
+        <option value="Chanterelles">Chanterelles</option>
+        <option value="Black Trumpets">Black Trumpets</option>
+        <option value="Morels">Morels</option>
+      </select>
+
+      <input class="submit-button" id="submit" type="submit" value="Submit">
+      </form>
 
 
-      <div id='test01'>test 01</div><br>
-      <div id='test02'>test 02</div><br>
-      <div id='test03'>test 03</div><br>
-      <div id='test04'>test 04</div><br>
-      <div id='test05'>test 05</div><br>
+      <!-- Result -->
+      <section id="result-paragraph">
+        <p>There have been <span id='number-of-tweets'>120</span> tweets</p>
+        <p>about <span id='forage-thing'>(insert mushroom)</span></p>
+        <p>around <span id='location'>(insert location)</span></p>
+        <p>over the past 7 days.</p>
+      </section>
 
 
 

@@ -1,9 +1,6 @@
-// const axios = require('axios')
-
-
 (function() {
 
-// this works
+// this works. keep for now
 // fetch(`http://localhost:3000/art-deco`)
 //   .then(function(response) {
 //     return response.json();
@@ -37,15 +34,21 @@ axios.get('http://localhost:3000/art-deco', {
    // ===============================
    function parseData(response){
 
-     console.log("hello from parseData")
-     console.log("TEST response.objects[0].title:", response.data.objects[0].title)
-     document.getElementById('test01').innerHTML = `title: ${response.data.objects[0].title} `
-     document.getElementById('test02').innerHTML = `year_acquired: ${response.data.objects[0].year_acquired} `
-     document.getElementById('test03').innerHTML = `decade: ${response.data.objects[0].decade} `
-     document.getElementById('test04').innerHTML = `medium: ${response.data.objects[0].medium} `
-     document.getElementById('test05').innerHTML = `description: ${response.data.objects[0].description} `
-
+     document.getElementById('number-of-tweets').innerHTML = `${response.data.objects[0].decade} `
+     document.getElementById('forage-thing').innerHTML = `${response.data.objects[0].type} `
+     document.getElementById('location').innerHTML = `${response.data.objects[0]["woe:country_name"]}`
+     showResultParagraph();
    }
+
+
+
+      //===============================
+    // Removes "display: none;" from result paragraph
+    // This is invoked after
+    //===============================
+    function showResultParagraph() {
+      document.getElementById('result-paragraph').style.display = 'block';
+    }
 
 
 

@@ -1,9 +1,9 @@
 
 /*
 font-family: 'Grenze', serif;
+font-family: 'Lilita One', cursive;
 font-family: 'Luckiest Guy', cursive;
 font-family: 'Ultra', serif;
-font-family: 'Lilita One', cursive;
 */
 
 
@@ -12,10 +12,66 @@ Body
 ==========================*/
 body {
   background-color: #ffc266; /* apricot */
-  font-size: 150%;
+  font-size: 250%;
   font-family: 'Grenze', serif;
+  padding: 30px;
+  color: #cc5200;
 }
 
+/*===========================
+Zip form: field & button
+=============================*/
+form {
+  margin-top: 3rem;
+  margin-bottom: 0em;
+}
+
+input[id=forage-thing], select {
+  font-size: 50%;
+  padding: 10px 12px;
+  margin-right: 7px;
+  display: inline-block;
+  border-radius: 4px;
+  width: 20rem;
+}
+
+.submit-button {
+  background-color: rgba(221, 73, 19, 1); /* orange */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 7px 15px;
+  text-align: center;
+  font-family: 'Vollkorn', serif;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 66%;
+  margin: 10px 0px 20px 0px;
+  cursor: pointer;
+  /* removes ugly iOS styling */
+  -webkit-appearance: none;
+}
+
+.submit-button:hover {
+  /*transition-delay: 500ms;*/
+  background-color: #063c93; /* blue */
+}
+
+#error-message {
+  display: inline-block;
+}
+
+
+/*========================
+Response
+==========================*/
+p {
+  margin: 0;
+}
+
+#result-paragraph {
+  display: none;
+}
 
 
 
@@ -26,10 +82,10 @@ footer {
   position: absolute;
   left: 10px;
   bottom: 5px;
-  font-size: 90%;
+  font-size: 50%;
 }
 
 .footer-link a {
-  color: rgba(0,0,0, .8);
+  color: rgba(0,0,0, .6);
   text-decoration: none;
 }
