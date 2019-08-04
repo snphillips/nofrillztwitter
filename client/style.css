@@ -1,0 +1,14 @@
+/*========================
+Footer
+==========================*/
+footer {
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+  font-size: 90%;
+}
+
+.footer-link a {
+  color: rgba(0,0,0, .8);
+  text-decoration: none;
+}

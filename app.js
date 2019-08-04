@@ -7,6 +7,8 @@ require('dotenv').config()
 // ${process.env.ACCESS-TOKEN}
 // ${process.env.ACEESS-TOKEN-SECRET}
 
+const cors = require('cors')
+
 
 // ==================================
 // Express
@@ -14,6 +16,8 @@ require('dotenv').config()
 // ==================================
 const express = require('express')
 const app = express()
+
+app.use(cors())
 
 const port = 3000
 
@@ -51,7 +55,7 @@ app.get('/:value', (req, res, next) => {
 
   const { value } = req.params;
 
-  axios.get(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=${process.env.COOPER_API_TOKEN}&has_images=1&per_page=10&tag=${value}`)
+  axios.get(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=${process.env.COOPER_API_TOKEN}&has_images=1&per_page=1&tag=${value}`)
   .then((response) => {
     console.log("response:", response.data )
 
@@ -59,7 +63,7 @@ app.get('/:value', (req, res, next) => {
   })
   .catch((error) => {
     console.log(error)
-    res.send(`I cant' find any items right now.`);
+    res.send(`I can't find any items right now.`);
   });
 });
 
