@@ -22,57 +22,65 @@ app.use(cors())
 const port = 3000
 
 // ==================================
-// Axios - npm package promise based HTTP client
+// importing Twit
 // ==================================
-const axios = require('axios');
-
-
-// ==================================
-// Error Handlers
-// TO DO: get to work
-// ==================================
-// app.use((err, req, res, next) => {
-//   res.json(err);
-//   res.status(500).send('Oh no a 500 error.')
-// });
-
-// app.use((req, res, next) => {
-//   res.status(404).send(`Oh no a 404 error. I can't find that.`)
-// })
-
+var Twit = require('twit')
 
 // ==================================
 // index route
 // ==================================
 app.get('/', (req, res, next) => {
-  res.send(`Hello World! Let's forage for Chanterelles`)
+  res.send(`Hello World! Let's forage`)
 })
 
-// ==================================
-// Get All - First an API that
-// ==================================
-app.get('/:forageThing', (req, res, next) => {
+app.get('/tweets/:query', getTweets);
 
-  const { forageThing } = req.params;
 
-  axios.get(`https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=${process.env.COOPER_API_TOKEN}&has_images=1&per_page=1&tag=${forageThing}`, {
-          params: {
-          API_SECRET_KEY: `${process.env.API_SECRET_KEY}`,
-          API_KEY: `${process.env.API_KEY}`,
-          ACCESS_TOKEN: `${process.env.ACCESS_TOKEN}`,
-          ACEESS_TOKEN_SECRET: `${process.env.ACEESS_TOKEN_SECRET}`
-      }})
-  .then((response) => {
+//this is the object of twit which will help us to call functions inside it
+var T = new Twit({
+  consumer_key:         `${process.env.API_KEY}`,
+  consumer_secret:      `${process.env.API_SECRET_KEY}`,
+  access_token:         `${process.env.ACCESS_TOKEN}`,
+  access_token_secret:  `${process.env.ACEESS_TOKEN_SECRET}`,
+  // timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+  // strictSSL:            true,     // optional - requires SSL certificates to be valid.
+})
+
+
+// ==================================
+// Playing with Twit package
+// ==================================
+// const forageThing  = 'chanterelles';
+function getTweets(req, res) {
+
+   var query = req.params.query;
+
+  T.get('search/tweets', { q: `${query} -RT since:2019-08-05 `, count: 1, }, function(err, data, response) {
+    console.log("The query is:", query)
+    parseData(err, data, response)
+  })
+    .then((response) => {
     console.log("response:", response.data )
-
     return res.json(response.data)
+
   })
   .catch((error) => {
     console.log(error)
     res.send(`I can't find any items right now.`);
   });
-});
 
+
+}
+
+
+// searchedData function is a callback function which returns the data when we make a search
+function parseData(err, data, response) {
+console.log("searchedData is:", data);
+    console.log("data.statuses[0].text:", data.statuses[0].text)
+    console.log("data.statuses[0].geo:", data.statuses[0].geo)
+    console.log("data.statuses[0].place:", data.statuses[0].place)
+    console.log("data.statuses[0].coordinates:", data.statuses[0].coordinates)
+}
 
 
 // ==================================

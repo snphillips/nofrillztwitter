@@ -26,7 +26,7 @@ form {
   margin-bottom: 0em;
 }
 
-input[id=forage-thing], select {
+input[id=query], select {
   font-size: 50%;
   padding: 10px 12px;
   margin-right: 7px;
@@ -70,7 +70,7 @@ p {
 }
 
 #result-paragraph {
-  display: none;
+  /*display: none;*/
 }
 
 

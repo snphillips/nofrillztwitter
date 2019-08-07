@@ -1,25 +1,28 @@
 (function() {
 
-  document.getElementById("button").addEventListener("click", lookupForageThing);
+  document.getElementById("button").addEventListener("click", lookupQuery);
 
   // The mega function that does it all when user clicks the submit button
-  function lookupForageThing() {
+  function lookupQuery() {
 
   // Whatever value the user selects from dropdown menu
-  var forageThing = document.getElementById("forage-thing").value
+  var query = document.getElementById("query").value
 
 
   //===============================
   // The axios call to the server
   //===============================
-  // This axios call is made to the Open Weather Map API,
-  // using the user's inputted zip.
-  function axiosCall(forageThing){
+  // This axios call is made to the API,
+  // using the user's inputted query
+  function axiosCall(query){
 
-    console.log("forageThing is:", forageThing)
+    console.log("query is:", query)
 
-    axios.get(`http://localhost:3000/${forageThing}`)
+    axios.get(`http://localhost:3000/tweets/${query}`)
     .then(function (response) {
+
+    //response is not coming home
+
       console.log("response:", response);
       parseData(response)
     })
@@ -27,7 +30,7 @@
       console.log(error);
     });
   }
-  axiosCall(forageThing);
+  axiosCall(query);
 
 
 
@@ -36,11 +39,19 @@
    // ===============================
    // Parsing the data from the returned JSON
    // ===============================
+   // function parseData(response){
+
+   //   document.getElementById('number-of-tweets').innerHTML = `${response.data.objects[0].decade} `
+   //   document.getElementById('query-description').innerHTML = `${response.data.objects[0].type} `
+   //   document.getElementById('location').innerHTML = `${response.data.objects[0]["woe:country_name"]}`
+   //   showResultParagraph();
+   // }
+
    function parseData(response){
 
-     document.getElementById('number-of-tweets').innerHTML = `${response.data.objects[0].decade} `
-     document.getElementById('forage-thing-description').innerHTML = `${response.data.objects[0].type} `
-     document.getElementById('location').innerHTML = `${response.data.objects[0]["woe:country_name"]}`
+     document.getElementById('tweet-number').innerHTML = `${response.data.statuses[0].text} `
+     document.getElementById('query-description').innerHTML = `${query} `
+     document.getElementById('location').innerHTML = `${response.data.statuses[0].goe}`
      showResultParagraph();
    }
 
@@ -53,10 +64,6 @@
     function showResultParagraph() {
       document.getElementById('result-paragraph').style.display = 'block';
     }
-
-
-
-
 
 
 
