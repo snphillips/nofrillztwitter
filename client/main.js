@@ -9,6 +9,20 @@
   var query = document.getElementById("query").value
 
 
+
+
+   // ===============================
+   // updateQuery
+   // ===============================
+   function updateQuery(){
+     document.getElementById('query-description').innerHTML = query
+     showResultParagraph();
+   }
+   updateQuery();
+
+
+
+
   //===============================
   // The axios call to the server
   //===============================
@@ -20,11 +34,11 @@
 
     axios.get(`http://localhost:3000/tweets/${query}`)
     .then(function (response) {
-
-    //response is not coming home
-
-      console.log("response:", response);
+      console.log("var response is:", response);
       parseData(response)
+    })
+    .then(function (response) {
+      // parseData(response)
     })
     .catch(function (error) {
       console.log(error);
@@ -39,19 +53,12 @@
    // ===============================
    // Parsing the data from the returned JSON
    // ===============================
-   // function parseData(response){
-
-   //   document.getElementById('number-of-tweets').innerHTML = `${response.data.objects[0].decade} `
-   //   document.getElementById('query-description').innerHTML = `${response.data.objects[0].type} `
-   //   document.getElementById('location').innerHTML = `${response.data.objects[0]["woe:country_name"]}`
-   //   showResultParagraph();
-   // }
-
    function parseData(response){
-
-     document.getElementById('tweet-number').innerHTML = `${response.data.statuses[0].text} `
-     document.getElementById('query-description').innerHTML = `${query} `
-     document.getElementById('location').innerHTML = `${response.data.statuses[0].goe}`
+     console.log("bananas:", response.data[0].text )
+     // document.getElementById('tweet-number').innerHTML = `${response.data[0].text} `
+     document.getElementById('query-description').innerHTML = query
+     document.getElementById('location').innerHTML = `${response.data[0].goe}`
+     document.getElementById('sample-tweet').innerHTML = `${response.data[0].text}`
      showResultParagraph();
    }
 
