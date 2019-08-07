@@ -33,6 +33,7 @@ app.get('/', (req, res, next) => {
   res.send(`Hello World! Let's forage`)
 })
 
+// This route searches twitter
 app.get('/tweets/:query', getTweets);
 
 
@@ -57,11 +58,12 @@ function getTweets(req, res) {
 
   T.get('search/tweets', { q: `${query} -RT since:2019-08-05 `, count: 1, }, function(err, data, response) {
     console.log("The query is:", query)
+    res.send(data.statuses)
     parseData(err, data, response)
   })
-    .then((response) => {
-    console.log("response:", response.data )
-    return res.json(response.data)
+    .then((res) => {
+    console.log("response:", data )
+    // return response.json(response.data)
 
   })
   .catch((error) => {
@@ -75,11 +77,11 @@ function getTweets(req, res) {
 
 // searchedData function is a callback function which returns the data when we make a search
 function parseData(err, data, response) {
-console.log("searchedData is:", data);
-    console.log("data.statuses[0].text:", data.statuses[0].text)
-    console.log("data.statuses[0].geo:", data.statuses[0].geo)
-    console.log("data.statuses[0].place:", data.statuses[0].place)
-    console.log("data.statuses[0].coordinates:", data.statuses[0].coordinates)
+  // console.log("searchedData is:", data.);
+  console.log("data.statuses[0].text:", data.statuses[0].text)
+  console.log("data.statuses[0].geo:", data.statuses[0].geo)
+  console.log("data.statuses[0].place:", data.statuses[0].place)
+  console.log("data.statuses[0].coordinates:", data.statuses[0].coordinates)
 }
 
 
