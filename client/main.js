@@ -34,7 +34,7 @@
 
     axios.get(`http://localhost:3000/tweets/${query}`)
     .then(function (response) {
-      console.log("var response is:", response);
+      console.log("response is:", response);
       parseData(response)
     })
     .then(function (response) {
@@ -54,8 +54,8 @@
    // Parsing the data from the returned JSON
    // ===============================
    function parseData(response){
-     console.log("bananas:", response.data[0].text )
-     // document.getElementById('tweet-number').innerHTML = `${response.data[0].text} `
+     console.log("response.data[0].text:", response.data[0].text )
+     // document.getElementById('tweet-number').innerHTML = `${response.data[0].search_metadata.count} `
      document.getElementById('query-description').innerHTML = query
      document.getElementById('location').innerHTML = `${response.data[0].goe}`
      document.getElementById('sample-tweet').innerHTML = `${response.data[0].text}`

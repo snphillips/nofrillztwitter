@@ -53,10 +53,25 @@ var T = new Twit({
 // const forageThing  = 'chanterelles';
 function getTweets(req, res) {
 
-   var query = req.params.query;
+  // The search query that includes filters like no retweets, only english tweets, etc.
+  // It's here to keep the GET requst neat.
+  // var query = `'${req.params.query}' + 'lang:en -RT since:2019-08-06'`;
 
-  T.get('search/tweets', { q: `${query} -RT since:2019-08-05 `, count: 1, }, function(err, data, response) {
-    console.log("The query is:", query)
+  var params = {
+    q: `${req.params.query}`,
+    since: `2019-08-06`, // REQUIRED //goes by year-month-date
+    // geocode: '33.743450,-84.393138,1mi',
+    result_type: 'recent',
+    count: '100',
+    lang: 'en',
+    retweeted: false,
+    in_reply_to_screen_name: null,
+   }
+
+
+  T.get('search/tweets', params, function(err, data, response) {
+  // T.get('search/tweets', { q: `${query}`, count: 1 }, function(err, data, response) {
+    // console.log("The query is:", query)
     res.send(data.statuses)
     parseData(err, data, response)
   })
@@ -75,7 +90,7 @@ function getTweets(req, res) {
 
 // searchedData function is a callback function which returns the data when we make a search
 function parseData(err, data, response) {
-  // console.log("searchedData is:", data);
+  console.log("searchedData is:", data);
   console.log("data.statuses[0].text:", data.statuses[0].text)
   console.log("data.statuses[0].geo:", data.statuses[0].geo)
   console.log("data.statuses[0].place:", data.statuses[0].place)
