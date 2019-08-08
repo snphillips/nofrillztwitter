@@ -1,6 +1,6 @@
 # Chanterelle-finder
 
 ## Made with
-- express backend
-- javascript
-- twitter API
+- node express server
+- javascript client
+- Twit API
