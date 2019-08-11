@@ -75,7 +75,7 @@ function getTweets(req, res) {
   T.get('search/tweets', params, function(err, data, response) {
     // console.log("The query is:", query)
     res.send(data.statuses)
-    parseData(data)
+    parseData(err, data, response)
   })
     .then((response) => {
     console.log("response:", data )
@@ -89,16 +89,17 @@ function getTweets(req, res) {
 }
 
 // searchedData function is a callback function which returns the data when we make a search
-function parseData(data) {
+function parseData(err, data, response) {
 
   // console.log("data", data)
 
   for (var i = 0; i < data.statuses.length; i++) {
     // console.log("data.statuses.text:", data.statuses[i].text)
-    console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
+    if (data.statuses[i].coordinates !== null) {
+      console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
+    }
   }
-
-}
+};
 
 
 
