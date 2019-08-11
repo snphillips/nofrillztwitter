@@ -32,7 +32,8 @@
     axios.get(`http://localhost:3000/tweets/${query}`)
     .then(function (response) {
       console.log("response is:", response);
-      parseData(response)
+      displayTweet(response);
+      getCoordinates(response);
     })
     .then(function (response) {
       // parseData(response)
@@ -45,34 +46,39 @@
 
 
 
+   // // ===============================
+   // // display query
+   // // ===============================
+   // function displayQuery(response){
+   //   document.getElementById('query-description').innerHTML = query
+   // }
+   //   displayQuery();
+
+
    // ===============================
-   // display query
+   // getting location coordinates
    // ===============================
-   function displayQuery(response){
-     document.getElementById('query-description').innerHTML = query
+   function getCoordinates(response){
+
+    console.log( "response.data.length", response.data.length )
+
+      for (var i = 0; i < response.data.length; i++) {
+
+        if (response.data[i].coordinates !== null) {
+          console.log(`response.data.[` + i + `].coordinates`, response.data[i].coordinates.coordinates)
+        }
+      }
    }
-     displayQuery();
 
-
-   // ===============================
-   // display location coordinates
-   // TODO: get to work
-   // ===============================
-   function displayLocationCoordinates(response){
-     console.log("data.statuses[0].coordinates", response.data[14].coordinates)
-     document.getElementById('location').innerHTML = `${response.data[14].coordinates}`
-   }
-     displayLocationCoordinates();
 
 
    // ===============================
-   // Parsing the data from the returned JSON
+   // display sample tweet
    // ===============================
-   function parseData(response){
+   function displayTweet(response){
      console.log("response.data[0].text:", response.data[0].text)
-     // document.getElementById('tweet-number').innerHTML = `${response.data[0].search_metadata.count} `
      document.getElementById('sample-tweet').innerHTML = `${response.data[0].text}`
-     showResultParagraph();
+     // displayTweet(response);
    }
 
 

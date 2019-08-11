@@ -66,6 +66,7 @@ function getTweets(req, res) {
     // geocode: `42.493347,-74.2310732,150mi`,
     result_type: 'recent',
     count: '100',
+    // has: "profile_geo" doesn't seem to be doing anything
     has: "profile_geo",
     lang: 'en',
     retweeted: false,
