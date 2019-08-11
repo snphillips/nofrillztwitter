@@ -6,23 +6,73 @@ font-family: 'Luckiest Guy', cursive;
 font-family: 'Ultra', serif;
 */
 
+/*========================
+CSS variables
+==========================*/
+:root {
+  --accent-color: rgba(221, 73, 19, 1); /* red-orange */
+}
+
 
 /*========================
 Body
 ==========================*/
 body {
   background-color: #ffc266; /* apricot */
-  font-size: 250%;
+  /*background-image: url("https://i.imgur.com/UQizrrt.jpg");*/
+  font-size: 200%;
   font-family: 'Grenze', serif;
   padding: 30px;
-  color: #cc5200;
+  color: #cc5200; /* orange */
+}
+
+/*========================
+Header
+==========================*/
+header {
+  border-bottom: 4px dashed rgba(221, 73, 19, 1);
+}
+
+img.toad {
+  width: 200px;
+  height: auto;
+  z-index: -1;
+  margin: 10px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.h1-div {
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+}
+
+
+h1 {
+  display: inline-block;
+  font-size: 1em;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.3em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  z-index: 1;
 }
 
 /*===========================
 Zip form: field & button
 =============================*/
+.form-section {
+margin-top: 1em;
+
+
+}
+
 form {
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 0em;
 }
 
@@ -36,7 +86,7 @@ input[id=query], select {
 }
 
 .submit-button {
-  background-color: rgba(221, 73, 19, 1); /* orange */
+  background-color: rgba(221, 73, 19, 1); /* red-orange */
   border: none;
   border-radius: 4px;
   color: white;
@@ -53,9 +103,17 @@ input[id=query], select {
 }
 
 .submit-button:hover {
-  /*transition-delay: 500ms;*/
-  background-color: #063c93; /* blue */
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #cc5200;
+  color: #fff;
+  -webkit-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
 }
+
+
 
 #error-message {
   display: inline-block;
@@ -67,12 +125,17 @@ Response
 ==========================*/
 p {
   margin: 0;
+  font-size: 80%;
 }
 
 #result-paragraph {
   /*display: none;*/
 }
 
+
+/*========================
+MAP
+==========================*/
 
 
 /*========================
