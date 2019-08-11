@@ -10,7 +10,6 @@
 
 
 
-
    // ===============================
    // updateQuery
    // ===============================
@@ -22,11 +21,9 @@
 
 
 
-
   //===============================
   // The axios call to the server
   //===============================
-  // This axios call is made to the API,
   // using the user's inputted query
   function axiosCall(query){
 
@@ -48,23 +45,39 @@
 
 
 
+   // ===============================
+   // display query
+   // ===============================
+   function displayQuery(response){
+     document.getElementById('query-description').innerHTML = query
+   }
+     displayQuery();
+
+
+   // ===============================
+   // display location coordinates
+   // TODO: get to work
+   // ===============================
+   function displayLocationCoordinates(response){
+     console.log("data.statuses[0].coordinates", response.data[14].coordinates)
+     document.getElementById('location').innerHTML = `${response.data[14].coordinates}`
+   }
+     displayLocationCoordinates();
 
 
    // ===============================
    // Parsing the data from the returned JSON
    // ===============================
    function parseData(response){
-     console.log("response.data[0].text:", response.data[0].text )
+     console.log("response.data[0].text:", response.data[0].text)
      // document.getElementById('tweet-number').innerHTML = `${response.data[0].search_metadata.count} `
-     document.getElementById('query-description').innerHTML = query
-     document.getElementById('location').innerHTML = `${response.data[0].goe}`
      document.getElementById('sample-tweet').innerHTML = `${response.data[0].text}`
      showResultParagraph();
    }
 
 
 
-      //===============================
+    //===============================
     // Removes "display: none;" from result paragraph
     // This is invoked after
     //===============================

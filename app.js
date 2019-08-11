@@ -36,6 +36,7 @@ app.get('/', (req, res, next) => {
 app.get('/tweets/:query', getTweets);
 
 
+
 //this is the object of twit which will help us to call functions inside it
 var T = new Twit({
   consumer_key:         `${process.env.API_KEY}`,
@@ -48,9 +49,9 @@ var T = new Twit({
 
 
 // ==================================
-// Playing with Twit package
+// Playing with Twit package search/tweets
 // ==================================
-// const forageThing  = 'chanterelles';
+
 function getTweets(req, res) {
 
   // The search query that includes filters like no retweets, only english tweets, etc.
@@ -59,43 +60,52 @@ function getTweets(req, res) {
 
   var params = {
     q: `${req.params.query}`,
-    since: `2019-08-06`, // REQUIRED //goes by year-month-date
-    // geocode: '33.743450,-84.393138,1mi',
+    // ultimately wont need this but keep for testing
+    // since: `2019-08-04`, // REQUIRED //goes by year-month-date
+    // geocode not working
+    // geocode: `42.493347,-74.2310732,150mi`,
     result_type: 'recent',
     count: '100',
+    has: "profile_geo",
     lang: 'en',
     retweeted: false,
-    in_reply_to_screen_name: null,
+    in_reply_to_screen_name: null
    }
 
-
   T.get('search/tweets', params, function(err, data, response) {
-  // T.get('search/tweets', { q: `${query}`, count: 1 }, function(err, data, response) {
     // console.log("The query is:", query)
     res.send(data.statuses)
-    parseData(err, data, response)
+    parseData(data)
   })
     .then((response) => {
     console.log("response:", data )
 
   })
-  .catch((error) => {
+    .catch((error) => {
     console.log(error)
     res.send(`I can't find any items right now.`);
   });
 
-
 }
-
 
 // searchedData function is a callback function which returns the data when we make a search
-function parseData(err, data, response) {
-  console.log("searchedData is:", data);
-  console.log("data.statuses[0].text:", data.statuses[0].text)
-  console.log("data.statuses[0].geo:", data.statuses[0].geo)
-  console.log("data.statuses[0].place:", data.statuses[0].place)
-  console.log("data.statuses[0].coordinates:", data.statuses[0].coordinates)
+function parseData(data) {
+
+  // console.log("data", data)
+
+  for (var i = 0; i < data.statuses.length; i++) {
+    // console.log("data.statuses.text:", data.statuses[i].text)
+    console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
+  }
+
 }
+
+
+
+
+
+
+
 
 
 // ==================================
