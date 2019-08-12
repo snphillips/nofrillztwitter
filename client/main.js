@@ -6,18 +6,20 @@
   function lookupQuery() {
 
   // Whatever value the user selects from dropdown menu
-  var query = document.getElementById("query").value
+  var searchTerm = document.getElementById("search-term").value
+  // For the server call to return the previous 100 tweets
+  var lowestRecentTweetId = 0;
 
 
 
    // ===============================
    // updateQuery
    // ===============================
-   function updateQuery(){
-     document.getElementById('query-description').innerHTML = query
+   function updateSearchTerm(){
+     document.getElementById('search-term-description').innerHTML = searchTerm
      showResultParagraph();
    }
-   updateQuery();
+   updateSearchTerm();
 
 
 
@@ -25,25 +27,27 @@
   // The axios call to the server
   //===============================
   // using the user's inputted query
-  function axiosCall(query){
+  function axiosCall(searchTerm, lowestRecentTweetId){
 
+    var query = searchTerm
+
+    console.log("search-term is:", searchTerm)
     console.log("query is:", query)
+    console.log("lowestRecentTweetId is:", lowestRecentTweetId)
 
     axios.get(`http://localhost:3000/tweets/${query}`)
     .then(function (response) {
       console.log("response is:", response);
+
       displayTweets(response);
       getCoordinates(response);
       displayTweets(response);
-    })
-    .then(function (response) {
-      // parseData(response)
     })
     .catch(function (error) {
       console.log(error);
     });
   }
-  axiosCall(query);
+  axiosCall(searchTerm, lowestRecentTweetId);
 
 
 
@@ -81,9 +85,11 @@
    }
 
 
+
+
   // ===============================
   // display sample tweets
-  // TODO: each tweet gets it own div or li
+  // TODO: each tweet gets it own <div> or li?
   // ===============================
   function displayTweets(response){
 
