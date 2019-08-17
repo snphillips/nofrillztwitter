@@ -13,13 +13,13 @@
 
 
    // ===============================
-   // updateQuery
+   // display search term
    // ===============================
-   function updateSearchTerm(){
+   function displaySearchTerm(){
      document.getElementById('search-term-description').innerHTML = searchTerm
      showResultParagraph();
    }
-   updateSearchTerm();
+   displaySearchTerm();
 
 
 
@@ -41,23 +41,15 @@
 
       displayTweets(response);
       getCoordinates(response);
-      displayTweets(response);
+
     })
     .catch(function (error) {
       console.log(error);
+      console.log("No tweets on that topic in the past 7 days");
     });
   }
   axiosCall(searchTerm, lowestRecentTweetId);
 
-
-
-   // // ===============================
-   // // display query
-   // // ===============================
-   // function displayQuery(response){
-   //   document.getElementById('query-description').innerHTML = query
-   // }
-   //   displayQuery();
 
 
    // ===============================
@@ -80,7 +72,7 @@
       console.log("coordiantesArray:", coordinatesArray)
       // document.getElementById('coordinates').innerHTML = `${coordinatesArray}`
       if (coordinatesArray.length < 1) {
-        console.log("there's no location data included in the past 100 tweets aobut", query)
+        console.log("there's no location data included in the past 100 tweets")
       }
    }
 

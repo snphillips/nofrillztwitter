@@ -24,7 +24,7 @@ const port = 3000
 // ==================================
 // importing Twit
 // ==================================
-var Twit = require('twit')
+const Twit = require('twit')
 
 // ==================================
 // index route
@@ -45,41 +45,37 @@ var T = new Twit({
   consumer_secret:      `${process.env.API_SECRET_KEY}`,
   access_token:         `${process.env.ACCESS_TOKEN}`,
   access_token_secret:  `${process.env.ACEESS_TOKEN_SECRET}`,
-  // timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-  // strictSSL:            true,     // optional - requires SSL certificates to be valid.
 })
 
 
 // ==================================
-// Playing with Twit package search/tweets
+// Twit API Call
+// https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators
 // ==================================
 
 function getTweets(req, res) {
 
+  let lowestRecentTweetId = 0;
 
-  var lowestRecentTweetId = 0;
-
-
-  var params = {
-    q: `${req.params.query}`,
+  let params = {
+    since_id: `${lowestRecentTweetId + 1}`,
+    q: `${req.params.query}
+      -filter:replies
+      -filter:retweets
+      -filter:media
+      -filter:native_video
+      -filter:links
+      -filter:vine
+      -filter:periscope
+      -filter:images
+      -filter:links
+      -filter:link
+      -filter:instagram
+      `,
+    lang: 'en',
     result_type: 'recent',
     count: '100',
-    lang: 'en',
-    // To avoid getting the same, "most recent" tweets
-    since_id: `${lowestRecentTweetId + 1}`,
-    // ultimately wont need this but keep for testing
-    // since: `2019-08-04`, // REQUIRED //goes by year-month-date
-    // has:'coordinates' not working
-    has: 'coordinates',
-    // has: "profile_geo" doesn't seem to be doing anythin
-    has: "profile_geo",
-    retweeted: false,
-    in_reply_to_screen_name: null
    }
-
-
-
-
 
   T.get('search/tweets', params, function(err, data, response) {
     // console.log("The query is:", query)
@@ -87,12 +83,13 @@ function getTweets(req, res) {
     parseData(err, data, response)
   })
     .then((response) => {
-    console.log("response:", data )
+    // console.log("response:", data )
+    console.log("params.q are", params.q)
 
   })
     .catch((error) => {
     console.log(error)
-    res.send(`I can't find any items right now.`);
+    res.send(`I can't find any items.`);
   });
 
 }
@@ -100,24 +97,33 @@ function getTweets(req, res) {
 
 
 
-// parseData function is a callback function which returns the data when we make a search
+// This is a callback function that returns the data when we make a search
 function parseData(err, data, response) {
+  // console.log("data", data)
 
-  console.log("data", data)
-  var tweetsArray = [];
+  // Keeping track of the tweets that have coordinates
+  let tweetsArrayWithCoordinates = [];
+  // Keeping track of the id of the tweets returned, b/c we'll need to do an other API call
+  // using the smallest number as the starting point
+  let allTweetsArray = [];
 
   for (var i = 0; i < data.statuses.length; i++) {
-    // console.log("data.statuses.text:", data.statuses[i].text)
+
+    console.log("data.statuses.text:", data.statuses[i].text)
+    allTweetsArray.push(data.statuses[i].id);
+
     if (data.statuses[i].coordinates !== null) {
       console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
       console.log(`data.statuses[` + i + `].id`, data.statuses[i].id)
-      tweetsArray.push(data.statuses[i].id);
-      lowestRecentTweetId = tweetsArray[0]
+      tweetsArrayWithCoordinates.push(data.statuses[i].id);
     }
   }
     // This is the lowest id in the set that you just retrieved with your query
     // Us this number to perform an other query for the previous 100 tweets
-    console.log("lowestRecentTweetId:", lowestRecentTweetId)
+    console.log("tweetsArrayWithCoordinates:", tweetsArrayWithCoordinates)
+    // TODO: this crashes server when tweetsArray is empty
+      let lowestRecentTweetId = allTweetsArray[0]
+      console.log("lowestRecentTweetId:", lowestRecentTweetId)
 };
 
 
