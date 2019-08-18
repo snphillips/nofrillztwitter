@@ -2,6 +2,7 @@
 
   document.getElementById("button").addEventListener("click", lookupQuery);
 
+
   // The mega function that does it all when user clicks the submit button
   function lookupQuery() {
 
@@ -29,23 +30,20 @@
   // using the user's inputted query
   function axiosCall(searchTerm, lowestRecentTweetId){
 
-    var query = searchTerm
-
     console.log("search-term is:", searchTerm)
-    console.log("query is:", query)
     console.log("lowestRecentTweetId is:", lowestRecentTweetId)
 
-    axios.get(`http://localhost:3000/tweets/${query}`)
+    axios.get(`http://localhost:3000/tweets/${searchTerm}`)
     .then(function (response) {
       console.log("response is:", response);
 
-      displayTweets(response);
-      getCoordinates(response);
+      displayLocation(response);
+      getLocation(response);
 
     })
     .catch(function (error) {
       console.log(error);
-      console.log("No tweets on that topic in the past 7 days");
+      console.log("No tweets here. Could be an error or could be there are no tweets");
     });
   }
   axiosCall(searchTerm, lowestRecentTweetId);
@@ -55,23 +53,23 @@
    // ===============================
    // getting location coordinates
    // ===============================
-   function getCoordinates(response){
+   function getLocation(response){
 
     // console.log( "response.data.length", response.data.length )
 
-    var coordinatesArray = [];
+    var locationArray = [];
 
       for (var i = 0; i < response.data.length; i++) {
 
-        if (response.data[i].coordinates !== null) {
-          // console.log(`response.data.[` + i + `].coordinates`, response.data[i].coordinates.coordinates)
-          coordinatesArray.push(response.data[i].coordinates.coordinates)
+        if (response.data[i].location !== null) {
+          // console.log(`response.data.[` + i + `].location`, response.data[i].user.location)
+          locationArray.push(response.data[i].user.location)
         }
       }
 
-      console.log("coordiantesArray:", coordinatesArray)
-      // document.getElementById('coordinates').innerHTML = `${coordinatesArray}`
-      if (coordinatesArray.length < 1) {
+      console.log("locationArray:", locationArray.length, locationArray)
+      // document.getElementById('location').innerHTML = `${locationArray}`
+      if (locationArray.length < 1) {
         console.log("there's no location data included in the past 100 tweets")
       }
    }
@@ -80,22 +78,24 @@
 
 
   // ===============================
-  // display sample tweets
+  // display location
   // TODO: each tweet gets it own <div> or li?
   // ===============================
-  function displayTweets(response){
+  function displayLocation(response){
 
-    console.log("response.data[0].text:", response.data[0].text)
-    var tweetsArray = [];
+    console.log(`response.data[i].user.location:`, response.data[0].user.location)
+    var locationArray = [];
 
     for (var i = 0; i < response.data.length; i++) {
 
-      if (response.data[i].coordinates !== null) {
+      // this should only put locations in the array when there IS a location
+      // right now it's putting empty strings in there too.
+      if (response.data[i].user.location !== ' ') {
 
-          tweetsArray.push(response.data[i].text)
+          locationArray.push(response.data[i].user.location)
         }
       }
-     document.getElementById('sample-tweets').innerHTML = `<li>${tweetsArray}</li>`
+     document.getElementById('sample-tweets').innerHTML = `${locationArray}`
      // displayTweet(response);
    }
 
