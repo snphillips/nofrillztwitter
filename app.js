@@ -1,12 +1,13 @@
-// so we can use environment variables from a .env file
+// ==================================
+// So we can use environment variables from a .env file
 // into process.env
+// ==================================
 require('dotenv').config()
-// Use the following:
-// ${process.env.API-KEY}
-// ${process.env.API-SECRET-KEY}
-// ${process.env.ACCESS-TOKEN}
-// ${process.env.ACEESS-TOKEN-SECRET}
 
+
+// ==================================
+// allows Cross-Origin Resource Sharing (CORS)
+// ==================================
 const cors = require('cors')
 
 
@@ -17,7 +18,7 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 
-app.use(cors())
+
 
 const port = 3000
 
@@ -25,6 +26,8 @@ const port = 3000
 // importing Twit
 // ==================================
 const Twit = require('twit')
+
+app.use(cors())
 
 // ==================================
 // index route
@@ -55,26 +58,18 @@ var T = new Twit({
 
 function getTweets(req, res) {
 
-  let lowestRecentTweetId = 0;
+// not defined in here
+// lowestRecentTweetId isn't working
+// console.log("Hello", `${lowestRecentTweetId}`)
 
   let params = {
-    since_id: `${lowestRecentTweetId + 1}`,
-    q: `${req.params.query}
-      -filter:replies
-      -filter:retweets
-      -filter:media
-      -filter:native_video
-      -filter:links
-      -filter:vine
-      -filter:periscope
-      -filter:images
-      -filter:links
-      -filter:link
-      -filter:instagram
-      `,
+    count: '100',
+    // max_id: 1159679678929490000 - 1,
+    // since_id: `${lowestRecentTweetId + 1}`,
+    // q: `${req.params.query} -filter:retweets`,
+    q: `${req.params.query} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:link -filter:instagram`,
     lang: 'en',
     result_type: 'recent',
-    count: '100',
    }
 
   T.get('search/tweets', params, function(err, data, response) {
@@ -84,7 +79,6 @@ function getTweets(req, res) {
   })
     .then((response) => {
     // console.log("response:", data )
-    console.log("params.q are", params.q)
 
   })
     .catch((error) => {
@@ -96,20 +90,25 @@ function getTweets(req, res) {
 
 
 
-
 // This is a callback function that returns the data when we make a search
 function parseData(err, data, response) {
-  // console.log("data", data)
 
-  // Keeping track of the tweets that have coordinates
+  console.log("data", data.statuses[0])
+
+
+  // Keeping track of the tweets that have coordinates, to map
   let tweetsArrayWithCoordinates = [];
+
   // Keeping track of the id of the tweets returned, b/c we'll need to do an other API call
   // using the smallest number as the starting point
   let allTweetsArray = [];
 
   for (var i = 0; i < data.statuses.length; i++) {
 
-    console.log("data.statuses.text:", data.statuses[i].text)
+    // console.log(`data.statuses[` + i + `].text:`, data.statuses[i].text)
+    console.log(`data.statuses[` + i + `].user.location`, data.statuses[i].user.location)
+    // console.log(`data.statuses[` + i + `].user.location`, data.statuses[i].user.geo)
+      // console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
     allTweetsArray.push(data.statuses[i].id);
 
     if (data.statuses[i].coordinates !== null) {
@@ -121,15 +120,10 @@ function parseData(err, data, response) {
     // This is the lowest id in the set that you just retrieved with your query
     // Us this number to perform an other query for the previous 100 tweets
     console.log("tweetsArrayWithCoordinates:", tweetsArrayWithCoordinates)
-    // TODO: this crashes server when tweetsArray is empty
-      let lowestRecentTweetId = allTweetsArray[0]
+
+      let lowestRecentTweetId = allTweetsArray[allTweetsArray.length - 1]
       console.log("lowestRecentTweetId:", lowestRecentTweetId)
 };
-
-
-
-
-
 
 
 
@@ -138,7 +132,5 @@ function parseData(err, data, response) {
 // Port
 // ==================================
 app.listen(port, () => console.log(`App listening on port ${port}!`))
-
-
 
 module.exports = app;
