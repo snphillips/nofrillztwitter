@@ -8,9 +8,6 @@
 
   // Whatever value the user selects from dropdown menu
   var searchTerm = document.getElementById("search-term").value
-  // For the server call to return the previous 100 tweets
-  var lowestRecentTweetId = 0;
-
 
 
    // ===============================
@@ -18,7 +15,7 @@
    // ===============================
    function displaySearchTerm(){
      document.getElementById('search-term-description').innerHTML = searchTerm
-     showResultParagraph();
+     // showResultParagraph();
    }
    displaySearchTerm();
 
@@ -28,93 +25,48 @@
   // The axios call to the server
   //===============================
   // using the user's inputted query
-  function axiosCall(searchTerm, lowestRecentTweetId){
+  function axiosCall(searchTerm){
 
-    console.log("search-term is:", searchTerm)
-    console.log("lowestRecentTweetId is:", lowestRecentTweetId)
+    console.log("the search-term is:", searchTerm)
+
 
     axios.get(`http://localhost:3000/tweets/${searchTerm}`)
     .then(function (response) {
-      console.log("response is:", response);
+      console.log("the response is:", response);
 
-      displayLocation(response);
-      getLocation(response);
-
+      displayTweets(response);
     })
     .catch(function (error) {
       console.log(error);
       console.log("No tweets here. Could be an error or could be there are no tweets");
     });
   }
-  axiosCall(searchTerm, lowestRecentTweetId);
-
-
-
-   // ===============================
-   // getting location coordinates
-   // ===============================
-   function getLocation(response){
-
-    // console.log( "response.data.length", response.data.length )
-
-    var locationArray = [];
-
-      for (var i = 0; i < response.data.length; i++) {
-
-        if (response.data[i].location !== null) {
-          // console.log(`response.data.[` + i + `].location`, response.data[i].user.location)
-          locationArray.push(response.data[i].user.location)
-        }
-      }
-
-      console.log("locationArray:", locationArray.length, locationArray)
-      // document.getElementById('location').innerHTML = `${locationArray}`
-      if (locationArray.length < 1) {
-        console.log("there's no location data included in the past 100 tweets")
-      }
-   }
-
+  axiosCall(searchTerm);
 
 
 
   // ===============================
-  // display location
+  // display tweets
   // TODO: each tweet gets it own <div> or li?
   // ===============================
-  function displayLocation(response){
+  function displayTweets(response){
 
-    console.log(`response.data[i].user.location:`, response.data[0].user.location)
-    var locationArray = [];
+    console.log(`response.data[0].text:`, response.data[0].text)
+    console.log(`response.data[1].text:`, response.data[1].text)
+
+    var tweetsArray = [];
 
     for (var i = 0; i < response.data.length; i++) {
 
-      // this should only put locations in the array when there IS a location
-      // right now it's putting empty strings in there too.
-      if (response.data[i].user.location !== ' ') {
+      // this should only put locations in the array
+      if (response.data[i].text !== ' ') {
 
-          locationArray.push(response.data[i].user.location)
+          tweetsArray.push(response.data[i].text)
         }
       }
-     document.getElementById('sample-tweets').innerHTML = `${locationArray}`
-     // displayTweet(response);
+     document.getElementById('twitter-feed').innerHTML = `${tweetsArray}`
+     // displayTweets(response);
    }
-
-
-
-    //===============================
-    // Removes "display: none;" from result paragraph
-    // This is invoked after
-    //===============================
-    function showResultParagraph() {
-      document.getElementById('result-paragraph').style.display = 'block';
-    }
-
-
-
-
-
-
-
 
 
 
