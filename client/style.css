@@ -10,7 +10,7 @@ font-family: 'Ultra', serif;
 CSS variables
 ==========================*/
 :root {
-  --accent-color: rgba(221, 73, 19, 1); /* red-orange */
+
 }
 
 
@@ -18,26 +18,17 @@ CSS variables
 Body
 ==========================*/
 body {
-  background-color: #ffc266; /* apricot */
-  /*background-image: url("https://i.imgur.com/UQizrrt.jpg");*/
-  font-size: 200%;
-  font-family: 'Grenze', serif;
+  background-color: #f8d703; /* yellow */
+  color: #000;
+  font-family: 'Helvetica', serif;
   padding: 30px;
-  color: #cc5200; /* orange */
 }
 
 /*========================
 Header
 ==========================*/
 header {
-  border-bottom: 4px dashed rgba(221, 73, 19, 1);
-}
-
-img.toad {
-  width: 200px;
-  height: auto;
-  z-index: -1;
-  margin: 10px;
+  /*border-bottom: 4px dashed rgba(221, 73, 19, 1);*/
 }
 
 .flex {
@@ -46,20 +37,23 @@ img.toad {
 }
 
 .h1-div {
-  height: 200px;
-  line-height: 200px;
-  text-align: center;
+
 }
 
 
 h1 {
   display: inline-block;
-  font-size: 1em;
-  margin-block-start: 0.5em;
+  font-family: "Helvetica Black", sans-serif;
+  font-size: 2em;
+/*  margin-block-start: 0.5em;
   margin-block-end: 0.3em;
   margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  z-index: 1;
+  margin-inline-end: 0px;*/
+}
+
+h2 {
+  font-family: "Helvetica Black", sans-serif;
+  font-size: 1em;
 }
 
 /*===========================
@@ -75,25 +69,26 @@ form {
 }
 
 input[id=query], select {
-  font-size: 50%;
-  padding: 10px 12px;
+  font-size: 100%;
+  padding: 20px 42px;
   margin-right: 7px;
   display: inline-block;
   border-radius: 4px;
-  width: 20rem;
+  width: 80rem;
 }
 
 .submit-button {
-  background-color: rgba(221, 73, 19, 1); /* red-orange */
+  color: white;
+  background-color: #000;
+  font-size: 120%;
+  font-weight: 700;
   border: none;
   border-radius: 4px;
-  color: white;
   padding: 7px 15px;
   text-align: center;
-  font-family: 'Vollkorn', serif;
   text-decoration: none;
   display: inline-block;
-  font-size: 66%;
+  /*font-size: 100%;*/
   margin: 10px 0px 20px 0px;
   cursor: pointer;
   /* removes ugly iOS styling */
@@ -104,13 +99,11 @@ input[id=query], select {
   z-index: 0;
   position: relative;
   overflow: hidden;
-  background-color: #cc5200;
-  color: #fff;
+  color: #f8d703; /* yellow */
   -webkit-transition: background-color 200ms linear;
   -o-transition: background-color 200ms linear;
   transition: background-color 200ms linear;
 }
-
 
 
 #error-message {
