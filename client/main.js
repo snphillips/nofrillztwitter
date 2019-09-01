@@ -47,33 +47,52 @@
 
   // ===============================
   // display tweets
-  // TODO: each tweet gets it own <div> or li?
   // ===============================
   function displayTweets(response){
 
     console.log(`response.data[0].text:`, response.data[0].text)
     console.log(`response.data[1].text:`, response.data[1].text)
 
-    var tweetsArray = [];
+
 
     for (var i = 0; i < response.data.length; i++) {
 
-      // this should only put locations in the array
-      if (response.data[i].text !== ' ') {
 
-          tweetsArray.push(response.data[i].text)
+    function listSingleTweet(element) {
+      return document.createElement(element);
+    }
+
+    function append(parent, el) {
+      return parent.appendChild(el);
+    }
+
+    // the unordered list
+    var ul = document.getElementById('twitter-feed');
+    var li = listSingleTweet('li'); //  Create the elements we need
+    var span = listSingleTweet('span');
+
+
+      // if there are tweets
+      if (response.data[i].text !== ' ') {
+        // document.getElementById('twitter-feed').innerHTML = `${tweetsArray}`
+        span.innerHTML = `${response.data[i].text}`
+
+        append(li, span);
+        append(ul, li);
+
+
+
+
+
+
         }
       }
-     document.getElementById('twitter-feed').innerHTML = `${tweetsArray}`
      // displayTweets(response);
    }
 
 
 
 }
-
-
-
 
 }
 )();

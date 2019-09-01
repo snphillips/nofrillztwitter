@@ -77,8 +77,8 @@ function getTweets(req, res) {
     // has: "profile_geo",
     count: '100',
     max_id: `${lowestRecentTweetId - 1}`,
-    // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
-    q: `${req.params.searchTerm} -filter:replies -filter:retweets`,
+    q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
+    // q: `${req.params.searchTerm} -filter:replies -filter:retweets`,
     lang: 'en',
     result_type: 'recent',
     // pretty sure this doesn't work
