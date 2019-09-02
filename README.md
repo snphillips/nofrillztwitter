@@ -1,4 +1,4 @@
-# Chanterelle-finder
+# no frillz twitter
 
 ## Made with
 - node express server
