@@ -18,8 +18,9 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 
-
-
+// ==================================
+// The port
+// ==================================
 const port = 3000
 
 // ==================================
@@ -33,12 +34,11 @@ app.use(cors())
 // index route
 // ==================================
 app.get('/', (req, res, next) => {
-  res.send(`Hello World! Let's forage`)
+  res.send(`Hello World! Let's look at no frillz tweets`)
 })
 
 app.get('/tweets/:searchTerm', getTweets);
 
-// app.get('/googleapi');
 
 //this is the object of twit which will help us to call functions inside it
 var T = new Twit({
@@ -58,8 +58,6 @@ let lowestRecentTweetId;
 let tweetsArrayWithCoordinates = [];
 
 
-
-
 // ==================================
 // Twit API Call
 // https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators
@@ -67,21 +65,14 @@ let tweetsArrayWithCoordinates = [];
 
 function getTweets(req, res) {
 
-// not defined in here
-// lowestRecentTweetId isn't working
-// console.log("Hello", `${lowestRecentTweetId}`)
-
+// TODO: add to the query non-truncated tweets
   let params = {
-    // not sure coordinates or profile_geo is doing anything
-    // has: "coordinates",
-    // has: "profile_geo",
     count: '100',
     max_id: `${lowestRecentTweetId - 1}`,
-    q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
-    // q: `${req.params.searchTerm} -filter:replies -filter:retweets`,
+    q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg -from:${req.params.searchTerm}`,
+    // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
     result_type: 'recent',
-    // pretty sure this doesn't work
    }
 
   T.get('search/tweets', params, function(err, data, response) {
@@ -101,9 +92,6 @@ function getTweets(req, res) {
 
 }
 
-
-
-
 // ==================================
 // This is a callback function that returns the data when we make a search
 // ==================================
@@ -113,27 +101,15 @@ function parseData(err, data, response) {
   console.log("lowestRecentTweetId", lowestRecentTweetId)
 
 
-  // // Keeping track of the tweets that have coordinates, to map
-  // let tweetsArrayWithCoordinates = [];
-
-  // Keeping track of the id of the tweets returned, b/c we'll need to do an other API call
-  // using the smallest number as the starting point
-
-  // let allTweetsIdArray = [];
-
   for (var i = 0; i < data.statuses.length; i++) {
 
 
     console.log(`data.statuses[` + i + `] id:`, data.statuses[i].id, `coordinates:`, data.statuses[i].coordinates, `text:`,data.statuses[i].text)
-    // console.log(`data.statuses[` + i + `].id`, data.statuses[i].id)
-    // console.log(`data.statuses[` + i + `].user.location`, data.statuses[i].user.location)
-    // console.log(`data.statuses[` + i + `].user.location`, data.statuses[i].user.geo)
-    // console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
+
     // Keeping track of all status ids (to later find the smallest value)
     allTweetsIdArray.push(data.statuses[i].id);
 
     // if the user shares coordinates, then put those tweets into an array
-    // hard to test this as so few folks share coordinates
     if (data.statuses[i].coordinates !== null) {
       console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
       console.log(`data.statuses[` + i + `].id`, data.statuses[i].id)
