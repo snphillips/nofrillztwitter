@@ -73,8 +73,6 @@
   function displayTweets(response){
 
     console.log(`response.data[0].text:`, response.data[0].text)
-    console.log(`response.data[1].text:`, response.data[1].text)
-
 
     for (var i = 0; i < response.data.length; i++) {
 
@@ -88,7 +86,7 @@
       }
 
       var ul = document.getElementById('twitter-feed');
-      var li = listSingleTweet('li'); //  Create the elements we need
+      var li = listSingleTweet('li');
       var span = listSingleTweet('span');
 
       var tweetBody = response.data[i].text
@@ -101,15 +99,9 @@
         append(li, span);
         append(ul, li);
 
-
-
-
-
-
-
         }
       }
-     // displayTweets(response);
+
    }
 
 
