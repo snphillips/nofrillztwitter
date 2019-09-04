@@ -25,11 +25,13 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 
 
@@ -59,7 +61,8 @@ const Twit = require('twit')
 // note we have cors(corsOptions)
 // ==================================
 app.get('/', cors(corsOptions), (req, res, next) => {
-  res.send(`Hello World! Let's look at no frillz tweets`)
+  // res.send(`Hello World! Let's look at no frillz tweets`)
+  res.json({msg: 'This is CORS-enabled for all origins!'})
 })
 
 app.get('/tweets/:searchTerm', getTweets);
