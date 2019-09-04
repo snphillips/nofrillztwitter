@@ -6,19 +6,20 @@ require('dotenv').config()
 
 
 // ==================================
+// Express
+// Henceforth, express is now app
+// ==================================
+const express = require('express')
+const app = express()
+
+
+// ==================================
 // CORS
 // npm package to allow cross origin resource sharing
 // ==================================
 const cors = require('cors')
 app.use(cors())
 
-
-// ==================================
-// Express
-// Henceforth, express is now app
-// ==================================
-const express = require('express')
-const app = express()
 
 // ==================================
 // The port
@@ -30,6 +31,7 @@ const port = process.env.PORT || 3000
 // importing Twit
 // ==================================
 const Twit = require('twit')
+
 
 
 // ==================================
