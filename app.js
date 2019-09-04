@@ -60,7 +60,8 @@ const Twit = require('twit')
 // index route
 // note we have cors(corsOptions)
 // ==================================
-app.get('/', cors(corsOptions), (req, res, next) => {
+// app.get('/', cors(corsOptions), (req, res, next) => {
+app.get('/tweets', cors(corsOptions), (req, res, next) => {
   // res.send(`Hello World! Let's look at no frillz tweets`)
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
@@ -102,8 +103,9 @@ function getTweets(req, res) {
     lang: 'en',
     result_type: 'recent',
 
-    origin: 'https://nofrillztweets.surge.sh',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    // Cors stuff. Does this belon here?
+    // origin: 'https://nofrillztweets.surge.sh',
+    // optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
    }
 
   T.get('search/tweets', params, function(err, data, response) {
