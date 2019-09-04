@@ -12,12 +12,6 @@
   // Whatever value the user selects from dropdown menu
   var searchTerm = document.getElementById("search-term").value
 
-
-
-
-
-
-
    // ===============================
    // display search term
    // ===============================
@@ -37,7 +31,9 @@
 
     console.log("the search-term is:", searchTerm)
 
-    axios.get(`http://localhost:3000/tweets/${searchTerm}`)
+    // axios.get(`http://localhost:3000/tweets/${searchTerm}`)
+    axios.get(`https://nofrillztwitter.herokuapp.com/tweets/${searchTerm}`)
+
     .then(function (response) {
       console.log("the response is:", response);
       //here in the promise, we display the tweets

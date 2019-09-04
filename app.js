@@ -6,9 +6,11 @@ require('dotenv').config()
 
 
 // ==================================
-// allows Cross-Origin Resource Sharing (CORS)
+// CORS
+// npm package to allow cross origin resource sharing
 // ==================================
 const cors = require('cors')
+app.use(cors())
 
 
 // ==================================
@@ -29,7 +31,6 @@ const port = process.env.PORT || 3000
 // ==================================
 const Twit = require('twit')
 
-app.use(cors())
 
 // ==================================
 // index route
