@@ -20,6 +20,12 @@ const app = express()
 const cors = require('cors')
 app.use(cors())
 
+var corsOptions = {
+  origin: 'file:///Users/snphillips/1webdev/nofrillztwitter/client/index.html',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
 
 // ==================================
 // Body-parser captures data coming via a form.
@@ -45,7 +51,7 @@ const Twit = require('twit')
 // ==================================
 // index route
 // ==================================
-app.get('/', (req, res, next) => {
+app.get('/', cors(corsOptions), (req, res, next) => {
   res.send(`Hello World! Let's look at no frillz tweets`)
 })
 
