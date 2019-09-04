@@ -6,6 +6,12 @@ require('dotenv').config()
 
 
 // ==================================
+// CORS
+// npm package to allow cross origin resource sharing
+// ==================================
+const cors = require('cors')
+
+// ==================================
 // Express
 // Henceforth, express is now app
 // ==================================
@@ -13,17 +19,20 @@ const express = require('express')
 const app = express()
 
 
-// ==================================
-// CORS
-// npm package to allow cross origin resource sharing
-// ==================================
-const cors = require('cors')
-app.use(cors())
+app.use(
+  cors({
+    origin: 'https://nofrillztweets.surge.sh', // restrict calls to those this address
+    methods: "GET", // only allow GET requests
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  })
+);
 
-var corsOptions = {
-  origin: 'https://nofrillztweets.surge.sh',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+
+
+// const corsOptions = {
+//   origin: 'https://nofrillztweets.surge.sh',
+//   optionsSu1ccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 
 
@@ -60,7 +69,8 @@ const Twit = require('twit')
 // index route
 // note we have cors(corsOptions)
 // ==================================
-app.get('/', cors(corsOptions), (req, res, next) => {
+// app.get('/', cors(corsOptions), (req, res, next) => {
+app.get('/', (req, res, next) => {
   // res.send(`Hello World! Let's look at no frillz tweets`)
   res.json({
     msg: 'Hello World!',
@@ -68,7 +78,7 @@ app.get('/', cors(corsOptions), (req, res, next) => {
   })
 })
 
-app.get('/tweets/:searchTerm', cors(corsOptions), getTweets);
+app.get('/tweets/:searchTerm', getTweets);
 
 
 //this is the object of twit which will help us to call functions inside it
