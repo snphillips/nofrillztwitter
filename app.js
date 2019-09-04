@@ -53,6 +53,7 @@ const Twit = require('twit')
 // ==================================
 app.get('/', cors(corsOptions), (req, res, next) => {
   res.send(`Hello World! Let's look at no frillz tweets`)
+  res.json({msg: 'This is CORS-enabled for only example.com.'})
 })
 
 app.get('/tweets/:searchTerm', getTweets);
