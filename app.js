@@ -23,9 +23,10 @@ app.use(cors())
 
 // ==================================
 // Body-parser captures data coming via a form.
-// (npm package that allows forms to work)
+// npm package that allows forms to work
 // ==================================
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 
 // ==================================
@@ -138,7 +139,17 @@ function parseData(err, data, response) {
 };
 
 
+// ==================================
+// Error Handlers
+// ==================================
+app.use((err, req, res, next) => {
+  res.json(err);
+  res.status(500).send('Oh no a 500 error.')
+});
 
+app.use((req, res, next) => {
+  res.status(404).send(`Oh no a 404 error. I can't find that.`)
+})
 
 // ==================================
 // Port
