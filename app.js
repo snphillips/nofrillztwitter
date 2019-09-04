@@ -101,6 +101,9 @@ function getTweets(req, res) {
     // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
     result_type: 'recent',
+
+    origin: 'https://nofrillztweets.surge.sh',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
    }
 
   T.get('search/tweets', params, function(err, data, response) {
