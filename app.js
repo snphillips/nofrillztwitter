@@ -60,12 +60,11 @@ const Twit = require('twit')
 // index route
 // note we have cors(corsOptions)
 // ==================================
-// app.get('/', cors(corsOptions), (req, res, next) => {
-app.get('/tweets', cors(corsOptions), (req, res, next) => {
+app.get('/', cors(corsOptions), (req, res, next) => {
   // res.send(`Hello World! Let's look at no frillz tweets`)
   res.json({
     msg: 'Hello World!',
-    msg: 'This is CORS-enabled for all origins',
+    msg: 'This is CORS-enabled for all origins'
   })
 })
 
