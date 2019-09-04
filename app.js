@@ -64,7 +64,7 @@ app.get('/', cors(corsOptions), (req, res, next) => {
   // res.send(`Hello World! Let's look at no frillz tweets`)
   res.json({
     msg: 'Hello World!',
-    msg: 'This is CORS-enabled for all originz'
+    msg2: 'This is CORS-enabled for all originz',
   })
 })
 
