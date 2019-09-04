@@ -22,6 +22,13 @@ app.use(cors())
 
 
 // ==================================
+// Body-parser captures data coming via a form.
+// (npm package that allows forms to work)
+// ==================================
+const bodyParser = require('body-parser');
+
+
+// ==================================
 // The port
 // ==================================
 const port = process.env.PORT || 3000
