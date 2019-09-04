@@ -68,7 +68,7 @@ app.get('/', cors(corsOptions), (req, res, next) => {
   })
 })
 
-app.get('/tweets/:searchTerm', getTweets);
+app.get('/tweets/:searchTerm', cors(corsOptions), getTweets);
 
 
 //this is the object of twit which will help us to call functions inside it
@@ -104,10 +104,6 @@ function getTweets(req, res) {
     // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
     result_type: 'recent',
-
-    // Cors stuff. Does this belon here?
-    // origin: 'https://nofrillztweets.surge.sh',
-    // optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
    }
 
   T.get('search/tweets', params, function(err, data, response) {
