@@ -61,11 +61,11 @@ const Twit = require('twit')
 // index route
 // note we have cors(corsOptions)
 // ==================================
-app.get('/', cors(corsOptions), (req, res, next) => {
+app.get('/', (req, res, next) => {
   // res.send(`Hello World! Let's look at no frillz tweets`)
   res.json({
     msg: 'Hello World!',
-    msg2: 'This is CORS-enabled for all originz',
+    msg2: 'This is CORS-enabled',
   })
 })
 
@@ -107,7 +107,7 @@ function getTweets(req, res) {
     result_type: 'recent',
    }
 
-  T.get('search/tweets', params, function(err, data, response) {
+  T.get('search/tweets', params, cors(corsOptions), function(err, data, response) {
     // console.log("The query is:", query)
     res.send(data.statuses)
     parseData(err, data, response)
