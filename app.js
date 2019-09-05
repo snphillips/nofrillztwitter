@@ -105,9 +105,10 @@ function getTweets(req, res) {
     // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
     result_type: 'recent',
+    origin: 'https://nofrillztweets.surge.sh'
    }
 
-  T.get('search/tweets', params, cors(corsOptions), function(err, data, response) {
+  T.get('search/tweets', params, function(err, data, response) {
     // console.log("The query is:", query)
     res.send(data.statuses)
     parseData(err, data, response)
