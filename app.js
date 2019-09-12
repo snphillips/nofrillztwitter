@@ -19,20 +19,14 @@ const express = require('express')
 const app = express()
 
 
+
+
 app.use(cors())
 
 const corsOptions = {
   origin: 'https://nofrillztweets.surge.sh',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-
-
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
 
 
@@ -61,7 +55,7 @@ const Twit = require('twit')
 // index route
 // note we have cors(corsOptions)
 // ==================================
-app.get('/', (req, res, next) => {
+app.get('/', cors(corsOptions), (req, res, next) => {
   // res.send(`Hello World! Let's look at no frillz tweets`)
   res.json({
     msg: 'Hello World!',
@@ -105,13 +99,14 @@ function getTweets(req, res) {
     // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
     result_type: 'recent',
+    //cors experiment
     origin: 'https://nofrillztweets.surge.sh'
    }
 
   T.get('search/tweets', params, function(err, data, response) {
     // console.log("The query is:", query)
     res.send(data.statuses)
-    parseData(err, data, response)
+    // parseData(err, data, response)
   })
     .then((response) => {
 
@@ -128,36 +123,36 @@ function getTweets(req, res) {
 // ==================================
 // This is a callback function that returns the data when we make a search
 // ==================================
-function parseData(err, data, response) {
+// function parseData(err, data, response) {
 
-  console.log("data", data.statuses[0])
-  console.log("lowestRecentTweetId", lowestRecentTweetId)
-
-
-  for (var i = 0; i < data.statuses.length; i++) {
+//   console.log("data", data.statuses[0])
+//   console.log("lowestRecentTweetId", lowestRecentTweetId)
 
 
-    console.log(`data.statuses[` + i + `] id:`, data.statuses[i].id, `coordinates:`, data.statuses[i].coordinates, `text:`,data.statuses[i].text)
+//   for (var i = 0; i < data.statuses.length; i++) {
 
-    // Keeping track of all status ids (to later find the smallest value)
-    allTweetsIdArray.push(data.statuses[i].id);
 
-    // if the user shares coordinates, then put those tweets into an array
-    if (data.statuses[i].coordinates !== null) {
-      console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
-      console.log(`data.statuses[` + i + `].id`, data.statuses[i].id)
-      tweetsArrayWithCoordinates.push(data.statuses[i].id);
-    }
-  }
+//     console.log(`data.statuses[` + i + `] id:`, data.statuses[i].id, `coordinates:`, data.statuses[i].coordinates, `text:`,data.statuses[i].text)
+
+//     // Keeping track of all status ids (to later find the smallest value)
+//     allTweetsIdArray.push(data.statuses[i].id);
+
+//     // if the user shares coordinates, then put those tweets into an array
+//     if (data.statuses[i].coordinates !== null) {
+//       console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
+//       console.log(`data.statuses[` + i + `].id`, data.statuses[i].id)
+//       tweetsArrayWithCoordinates.push(data.statuses[i].id);
+//     }
+//   }
     // This is the lowest id in the set that you just retrieved with your query
     // Us this number to perform an other query for the previous 100 tweets
-    console.log("tweetsArrayWithCoordinates:", tweetsArrayWithCoordinates)
+    // console.log("tweetsArrayWithCoordinates:", tweetsArrayWithCoordinates)
 
-      lowestRecentTweetId = allTweetsIdArray[allTweetsIdArray.length - 1]
+      // lowestRecentTweetId = allTweetsIdArray[allTweetsIdArray.length - 1]
 
-      console.log("allTweetsIdArray:", allTweetsIdArray)
-      console.log("lowestRecentTweetId:", lowestRecentTweetId, "allTweetsIdArray.length:", allTweetsIdArray.length)
-};
+      // console.log("allTweetsIdArray:", allTweetsIdArray)
+      // console.log("lowestRecentTweetId:", lowestRecentTweetId, "allTweetsIdArray.length:", allTweetsIdArray.length)
+// };
 
 
 // ==================================
