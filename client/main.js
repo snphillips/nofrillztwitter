@@ -31,11 +31,12 @@
 
     console.log("the search-term is:", searchTerm)
 
-    // axios.get(`http://localhost:3000/tweets/${searchTerm}`)
-    axios.get(`https://nofrillztwitter.herokuapp.com/tweets/`+`${searchTerm}`)
+    axios.get(`http://localhost:3000/tweets/${searchTerm}`)
+    // axios.get(`https://nofrillztwitter.herokuapp.com/tweets/${searchTerm}`)
 
     .then(function (response) {
       console.log("the response is:", response);
+
       //here in the promise, we display the tweets
       displayTweets(response);
 
@@ -64,7 +65,7 @@
 
 
   // ===============================
-  // display tweets
+  // display a list of tweets
   // ===============================
   function displayTweets(response){
 

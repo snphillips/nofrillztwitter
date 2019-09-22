@@ -78,10 +78,10 @@ var T = new Twit({
 // ==================================
 // Some variables
 // ==================================
-let allTweetsIdArray = [];
-let lowestRecentTweetId;
-  // // Keeping track of the tweets that have coordinates, to potentially map
-let tweetsArrayWithCoordinates = [];
+// let allTweetsIdArray = [];
+// let lowestRecentTweetId;
+  // Keeping track of the tweets that have coordinates, to potentially map
+// let tweetsArrayWithCoordinates = [];
 
 
 // ==================================
@@ -91,10 +91,10 @@ let tweetsArrayWithCoordinates = [];
 
 function getTweets(req, res) {
 
-// TODO: add to the query non-truncated tweets
+// TODO: add to the query non-truncated tweets, if possible
   let params = {
     count: '100',
-    max_id: `${lowestRecentTweetId - 1}`,
+    // max_id: `${lowestRecentTweetId - 1}`,
     q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg -from:${req.params.searchTerm}`,
     // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
@@ -103,14 +103,16 @@ function getTweets(req, res) {
     origin: 'https://nofrillztweets.surge.sh'
    }
 
+
+
   T.get('search/tweets', params, function(err, data, response) {
-    // console.log("The query is:", query)
+    // console.log("The query is:", `${req.params.searchTerm}`)
     res.send(data.statuses)
     // parseData(err, data, response)
   })
     .then((response) => {
 
-    // console.log("response:", data )
+    console.log("response:", data )
 
   })
     .catch((error) => {
@@ -120,39 +122,6 @@ function getTweets(req, res) {
 
 }
 
-// ==================================
-// This is a callback function that returns the data when we make a search
-// ==================================
-// function parseData(err, data, response) {
-
-//   console.log("data", data.statuses[0])
-//   console.log("lowestRecentTweetId", lowestRecentTweetId)
-
-
-//   for (var i = 0; i < data.statuses.length; i++) {
-
-
-//     console.log(`data.statuses[` + i + `] id:`, data.statuses[i].id, `coordinates:`, data.statuses[i].coordinates, `text:`,data.statuses[i].text)
-
-//     // Keeping track of all status ids (to later find the smallest value)
-//     allTweetsIdArray.push(data.statuses[i].id);
-
-//     // if the user shares coordinates, then put those tweets into an array
-//     if (data.statuses[i].coordinates !== null) {
-//       console.log(`data.statuses[` + i + `].coordinates`, data.statuses[i].coordinates)
-//       console.log(`data.statuses[` + i + `].id`, data.statuses[i].id)
-//       tweetsArrayWithCoordinates.push(data.statuses[i].id);
-//     }
-//   }
-    // This is the lowest id in the set that you just retrieved with your query
-    // Us this number to perform an other query for the previous 100 tweets
-    // console.log("tweetsArrayWithCoordinates:", tweetsArrayWithCoordinates)
-
-      // lowestRecentTweetId = allTweetsIdArray[allTweetsIdArray.length - 1]
-
-      // console.log("allTweetsIdArray:", allTweetsIdArray)
-      // console.log("lowestRecentTweetId:", lowestRecentTweetId, "allTweetsIdArray.length:", allTweetsIdArray.length)
-// };
 
 
 // ==================================
