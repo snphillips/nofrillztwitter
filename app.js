@@ -39,9 +39,9 @@ app.use(bodyParser.json());
 
 
 // ==================================
-// The port
+// set the port, either from an environmental variable or manually
 // ==================================
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
 
 // ==================================
@@ -112,6 +112,8 @@ function getTweets(req, res) {
   })
     .then((response) => {
 
+    // test
+    return res.json(response.data)
     console.log("response:", data )
 
   })
