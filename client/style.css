@@ -1,11 +1,4 @@
 
-/*
-font-family: 'Grenze', serif;
-font-family: 'Lilita One', cursive;
-font-family: 'Luckiest Guy', cursive;
-font-family: 'Ultra', serif;
-*/
-
 /*========================
 CSS variables
 ==========================*/
@@ -62,19 +55,20 @@ h2 {
 Zip form: field & button
 =============================*/
 .form-section {
-margin-top: 1em;
+  margin-top: 1em;
+  display: block;
 }
 
 form {
   margin-top: 2rem;
   margin-bottom: 0em;
+  display: block;
 }
 
-input  {
+input#search-term  {
   font-size: 150%;
   padding: 4px;
-  margin-right: 1rem;
-  display: inline-block;
+  display: block;
   border-radius: 4px;
   /* width: 8rem; */
   /* height: 1rem; */
@@ -123,9 +117,6 @@ p {
   /*font-size: 80%;*/
 }
 
-#result-paragraph {
-  /*display: none;*/
-}
 
 @keyframes fadeIn {
   0% {
@@ -164,7 +155,7 @@ footer {
 }
 
 .footer-link a {
-  color: rgba(0,0,0, .6);
+  color: rgba(0,0,0,1);
   text-decoration: none;
 }
 
@@ -175,6 +166,11 @@ footer {
 /*Very Small devices (500px and smaller) media query*/
 /*=================================*/
 @media (max-width: 500px) {
+
+  input#search-term {
+    width: 94%;
+  }
+
 
   footer {
     font-size: 100%;
