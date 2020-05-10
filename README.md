@@ -26,9 +26,10 @@ To view the front end, open index.html in a browser. If using a mac right-click 
 
 If you input a search term now, you'll likely get a CORS error. Before this app works, you'll have to address the CORS issue. I use a Chrome extension called Moesif Orign & CORS Changer. 
 
-Read more about CORS erros here.
+
 [Moesif Orign & CORS Changer](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US)
-[Learn more about CORS](https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9)
+
+[Learn more about CORS errors here.](https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9)
 
 
 <img src="https://i.imgur.com/9R8ZeTH.png" width="500" alt="screengrab of server">
