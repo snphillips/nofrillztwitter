@@ -22,9 +22,10 @@ To test if you are connecting to the twitter API, vist http://localhost:3000/twe
 You can try that with any search term apended after /tweets/.
 
 
-To view the front end, open index.html in a browser. If using a mac right-click on index.html, select "Reveal in Finder", then double-click the file name. A browser window should open. 
+To view the front end, open *index.html* in a browser. 
+If using a mac, right-click on index.html, select "Reveal in Finder", then double-click the file name. A browser window should open. 
 
-If you input a search term now, you'll likely get a CORS error. Before this app works, you'll have to address the CORS issue. I use a Chrome extension called Moesif Orign & CORS Changer. 
+If you input a search term now, you'll likely get a CORS error. Before this app works locally, you'll have to address the CORS issue. I use a Chrome extension called Moesif Orign & CORS Changer. Remember to turn off the extension when you are done.
 
 
 [Moesif Orign & CORS Changer](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US)
