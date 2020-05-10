@@ -34,7 +34,7 @@ Learn more about the CORS error [here.](https://medium.com/@dtkatz/3-ways-to-fix
 
 
 <img src="https://i.imgur.com/9R8ZeTH.png" width="500" alt="screengrab of server">
-<img src="https://i.imgur.com/Rm7rTyO.png" width="350" alt="screengrab of server">
+<img src="https://i.imgur.com/Rm7rTyO.png" width="300" alt="screengrab of server">
 
 
 
