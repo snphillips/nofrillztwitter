@@ -114,7 +114,7 @@ function getTweets(req, res) {
 
     // test
     return res.json(response.data)
-    console.log("response:", data )
+    console.log("response from T.get:", data )
 
   })
     .catch((error) => {

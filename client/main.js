@@ -29,10 +29,13 @@
   // using the user's inputted query
   function axiosCall(searchTerm){
 
-    console.log("the search-term is:", searchTerm)
+    console.log("Main.js: The search-term is:", searchTerm)
 
-    // axios.get(`http://localhost:3000/tweets/${searchTerm}`)
-    axios.get(`https://nofrillztwitter.herokuapp.com/tweets/${searchTerm}`)
+    // When in development:
+    axios.get(`http://localhost:3000/tweets/${searchTerm}`)
+
+    // When in production
+    // axios.get(`https://nofrillztwitter.herokuapp.com/tweets/${searchTerm}`)
 
     .then(function (response) {
 
@@ -73,6 +76,7 @@
     // console.log(`response.data[0].text:`, response.data[0].text)
 
     for (var i = 0; i < response.data.length; i++) {
+      console.log("hihihi")
 
 
       function listSingleTweet(element) {

@@ -153,9 +153,6 @@ li {
 }
 
 
-
-
-
 /*========================
 Footer
 ==========================*/
@@ -163,10 +160,34 @@ footer {
   position: absolute;
   left: 10px;
   bottom: 5px;
-  font-size: 50%;
+  font-size: 90%;
 }
 
 .footer-link a {
   color: rgba(0,0,0, .6);
   text-decoration: none;
 }
+
+
+
+
+/*=================================*/
+/*Very Small devices (500px and smaller) media query*/
+/*=================================*/
+@media (max-width: 500px) {
+
+  footer {
+    font-size: 100%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
