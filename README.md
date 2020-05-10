@@ -13,7 +13,7 @@ To get the node server running, in your terminal type:
 `nodemon app.js`
 
 Open a browser window to http://localhost:3000/ where you should see a "Hello World" message.
-To test if you can connect to the twitter API, vist http://localhost:3000/tweets/bananas. You should see a json with tweets about bananas.
+To test if you are connecting to the twitter API, vist http://localhost:3000/tweets/bananas. You should see a json with tweets about bananas.
 
 <img src="https://i.imgur.com/3bvGapG.png" width="500" alt="screengrab of server">
      
