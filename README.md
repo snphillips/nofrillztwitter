@@ -26,6 +26,8 @@ To view the front end, open index.html in a browser. If using a mac right-click 
 Before this app works, you'll have to adress the CORS issue. 
 
 <img src="https://i.imgur.com/9R8ZeTH.png" width="500" alt="screengrab of server">
+<img src="https://i.imgur.com/Rm7rTyO.png" width="350" alt="screengrab of server">
+
 
 
 
