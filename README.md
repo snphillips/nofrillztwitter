@@ -23,7 +23,10 @@ You can try that with any search term apended after /tweets/.
 
 
 To view the front end, open index.html in a browser. If using a mac right-click on index.html, select "Reveal in Finder", then double-click the file name. A browser window should open. 
-Before this app works, you'll have to adress the CORS issue. 
+
+If you input a search term now, you'll likely get a CORS error. Before this app works, you'll have to address the CORS issue. I use a Chrome extension called Moesif Orign & CORS Changer. Read more about CORS erros here.
+https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc/related?hl=en-US
+https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
 
 <img src="https://i.imgur.com/9R8ZeTH.png" width="500" alt="screengrab of server">
 <img src="https://i.imgur.com/Rm7rTyO.png" width="350" alt="screengrab of server">
