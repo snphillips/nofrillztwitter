@@ -35,6 +35,6 @@ https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-a
 
 
 ## Made with
-- node express server
-- javascript client
+- node express server (backend)
+- javascript client (front end)
 - Twit API
