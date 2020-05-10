@@ -12,6 +12,10 @@ To get the node server running, in your terminal type:
 
 `nodemon app.js`
 
+To get the React client running, in your terminal type:
+
+` (isert) `
+
 
 ## Made with
 - node express server
