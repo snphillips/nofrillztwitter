@@ -6,7 +6,11 @@ no frillz twitter is a simple twitter client that returns recent tweets based on
 
 Clone this repo:
 
-`git clone (insrt)`
+`git clone (insert repo name)`
+
+To get the node server running, in your terminal type:
+
+`nodemon app.js`
 
 
 ## Made with
