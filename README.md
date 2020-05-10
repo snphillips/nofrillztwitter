@@ -1,6 +1,6 @@
 # no frillz twitter
 
-no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. 
+no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node backend and react front-end.
 
 ## Getting Started
 
