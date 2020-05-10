@@ -1,6 +1,6 @@
 # no frillz twitter
 
-no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node backend and react front-end.
+no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node backend and front-end.
 
 ## Getting Started
 
@@ -12,9 +12,11 @@ To get the node server running, in your terminal type:
 
 `nodemon app.js`
 
-To get the React client running, in your terminal type:
+Open a browser window to http://localhost:3000/
 
-` (isert) `
+You should see a "Hello World"
+
+To view the front end, open index.html in a browser. If using a mac right-click on index.html, select "Reveal in Finder", then double-click the file name. A browser window should open. 
 
 
 ## Made with
