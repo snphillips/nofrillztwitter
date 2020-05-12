@@ -25,7 +25,7 @@
     // var server = `http://localhost:3000/tweets/`
 
     // Server when in production:
-    var server = `https://nofrillztwitter.herokuapp.com/tweets/`
+    var server = `https://nofrillztwitter.herokuapp.com/`
 
     console.log("Main.js: The server is:", server)
 
