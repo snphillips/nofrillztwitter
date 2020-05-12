@@ -7,13 +7,10 @@ body {
   color: #000;
   font-family: 'Helvetica', serif;
   padding: 30px;
-  height: 100%; /* ensures content fills screen */
+  height: 100%;
 }
 
 #no-frillz-twitter {
-  /*height: -webkit-fill-available;*/
-  /*align-items: flex-end;*/
-  /*border: 1px solid blue;*/
   display: flex;
   flex-direction: column;
 }
@@ -22,7 +19,7 @@ body {
 Header
 ==========================*/
 header {
-  /*border-bottom: 4px dashed rgba(221, 73, 19, 1);*/
+
 }
 
 .flex {
@@ -41,10 +38,6 @@ h1 {
   font-size: 2em;
   margin-top: 0;
   margin-bottom: 0;
-/*  margin-block-start: 0.5em;
-  margin-block-end: 0.3em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;*/
 }
 
 h2 {

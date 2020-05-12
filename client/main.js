@@ -22,10 +22,10 @@
     console.log("Main.js: The search-term is:", searchTerm)
 
     // Server when in development:
-    var server = `http://localhost:3000/tweets/`
+    // var server = `http://localhost:3000/tweets/`
 
     // Server when in production:
-    // var server = `https://nofrillztwitter.herokuapp.com/`
+    var server = `https://nofrillztwitter.herokuapp.com/`
 
     console.log("Main.js: The server is:", server)
 
@@ -52,7 +52,7 @@
   // ===============================
   function clearPreviousTweets() {
     // Removes an element from the document
-    var tweetsList = document.getElementById('twitter-feed');
+    var tweetsList = document.getElementById('tweet-list');
 
     // As long as <ul> has a child node, remove it
    while (tweetsList.hasChildNodes()) {
@@ -80,7 +80,7 @@
         return parent.appendChild(el);
       }
 
-      var ul = document.getElementById('twitter-feed');
+      var ul = document.getElementById('tweet-list');
       var li = listSingleTweet('li');
       var span = listSingleTweet('span');
 
