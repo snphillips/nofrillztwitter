@@ -7,7 +7,7 @@ no frillz twitter is a simple twitter client that returns recent tweets based on
 ## But Why?
 Q: Isn't this just a worse Twitter client that _does less_ than real twitter?
 
-A: Yes. I wanted the challenge of working with the Twitter API
+A: Yes. I wanted the challenge of working with the Twitter API.
 
 
 
