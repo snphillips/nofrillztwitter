@@ -12,16 +12,6 @@
   // Whatever value the user selects from dropdown menu
   var searchTerm = document.getElementById("search-term").value
 
-   // ===============================
-   // display search term
-   // ===============================
-   // function displaySearchTerm(){
-   //   document.getElementById('search-term-description').innerHTML = searchTerm
-   //   // showResultParagraph();
-   // }
-   // displaySearchTerm();
-
-
 
   //===============================
   // The axios call to the server
@@ -31,11 +21,16 @@
 
     console.log("Main.js: The search-term is:", searchTerm)
 
-    // When in development:
-    axios.get(`http://localhost:3000/tweets/${searchTerm}`)
+    // Server when in development:
+    // var server = `http://localhost:3000/tweets/`
 
-    // When in production
-    // axios.get(`https://nofrillztwitter.herokuapp.com/tweets/${searchTerm}`)
+    // Server when in production:
+    var server = `https://nofrillztwitter.herokuapp.com/`
+
+    console.log("Main.js: The server is:", server)
+
+    axios.get(`${server} + ${searchTerm}`)
+
 
     .then(function (response) {
 
@@ -76,8 +71,6 @@
     // console.log(`response.data[0].text:`, response.data[0].text)
 
     for (var i = 0; i < response.data.length; i++) {
-      console.log("hihihi")
-
 
       function listSingleTweet(element) {
         return document.createElement(element);
