@@ -2,7 +2,7 @@
 
 *** IN DEVELOPMENT ***
 
-no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node/express backend and javascript front-end.
+no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node/express backend and javascript front-end (in the directory called client).
 
 ## But Why?
 Q: Isn't this just a worse Twitter client that _does less_ than real twitter?
