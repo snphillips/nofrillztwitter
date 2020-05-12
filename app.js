@@ -105,7 +105,7 @@ function getTweets(req, res) {
 
 
   T.get('search/tweets', params, function(err, data, response) {
-    // console.log("The query is:", `${req.params.searchTerm}`)
+    console.log("The query is:", `${req.params.searchTerm}`)
     res.send(data.statuses)
     // parseData(err, data, response)
   })
@@ -117,7 +117,7 @@ function getTweets(req, res) {
 
   })
     .catch((error) => {
-    console.log(error)
+    console.log(error.response)
     res.send(`I can't find any items.`);
   });
 
