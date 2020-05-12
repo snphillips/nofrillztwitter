@@ -7,12 +7,15 @@ body {
   color: #000;
   font-family: 'Helvetica', serif;
   padding: 30px;
+  height: 100%; /* ensures content fills screen */
 }
 
 #no-frillz-twitter {
   /*height: -webkit-fill-available;*/
-  /*display: flex;*/
   /*align-items: flex-end;*/
+  /*border: 1px solid blue;*/
+  display: flex;
+  flex-direction: column;
 }
 
 /*========================
@@ -147,14 +150,15 @@ Banana image
 ==========================*/
 .banana-container {
   display: flex;
-  justify-content: flex-end; /* bananas to the right */
-  align-items: flex-end;
+  /*border: 1px solid red;*/
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 2;
 }
 
 .banana-image {
-  max-width: 24rem;
-  position: fixed;
-  bottom: 107px;
+  max-width: 14rem;
 }
 
 
@@ -172,6 +176,7 @@ footer {
   background-color: #f8d703; /* yellow */
   z-index: 1;
   padding: 3rem 1rem 2rem 1rem;
+  /*border: 1px solid green;*/
 
 }
 
@@ -192,9 +197,8 @@ footer {
   /*display: block;*/
   }
 
-
-form {
-    /*margin-top: 1rem;*/
+  form {
+    margin-top: 0;
   }
 
   input#search-term {
@@ -202,15 +206,12 @@ form {
   }
 
   .banana-image {
-    max-width: 10rem;
-    position: fixed;
-    bottom: 20px;
-    right: 10px;
-    z-index: 2;
+    max-width: 8rem;
   }
 
   footer {
     font-size: 100%;
+    padding: 2rem 1rem 1rem 1rem;
   }
 
 
