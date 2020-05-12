@@ -1,13 +1,5 @@
 
 /*========================
-CSS variables
-==========================*/
-:root {
-
-}
-
-
-/*========================
 Body
 ==========================*/
 body {
@@ -15,6 +7,12 @@ body {
   color: #000;
   font-family: 'Helvetica', serif;
   padding: 30px;
+}
+
+#no-frillz-twitter {
+  /*height: -webkit-fill-available;*/
+  /*display: flex;*/
+  /*align-items: flex-end;*/
 }
 
 /*========================
@@ -60,7 +58,7 @@ Zip form: field & button
 }
 
 form {
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 0em;
   display: block;
 }
@@ -145,13 +143,36 @@ li {
 
 
 /*========================
+Banana image
+==========================*/
+.banana-container {
+  display: flex;
+  justify-content: flex-end; /* bananas to the right */
+  align-items: flex-end;
+}
+
+.banana-image {
+  max-width: 24rem;
+  position: fixed;
+  bottom: 107px;
+}
+
+
+/*========================
 Footer
 ==========================*/
 footer {
-  position: absolute;
-  left: 10px;
-  bottom: 5px;
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
   font-size: 90%;
+  background-color: #f8d703; /* yellow */
+  z-index: 1;
+  padding: 3rem 1rem 2rem 1rem;
+
 }
 
 .footer-link a {
@@ -167,14 +188,36 @@ footer {
 /*=================================*/
 @media (max-width: 500px) {
 
+  #no-frillz-twitter {
+  /*display: block;*/
+  }
+
+
+form {
+    /*margin-top: 1rem;*/
+  }
+
   input#search-term {
     width: 94%;
   }
 
+  .banana-image {
+    max-width: 10rem;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 2;
+  }
 
   footer {
     font-size: 100%;
   }
+
+
+
+
+
+
 
 }
 

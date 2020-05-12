@@ -22,10 +22,10 @@
     console.log("Main.js: The search-term is:", searchTerm)
 
     // Server when in development:
-    // var server = `http://localhost:3000/tweets/`
+    var server = `http://localhost:3000/tweets/`
 
     // Server when in production:
-    var server = `https://nofrillztwitter.herokuapp.com/`
+    // var server = `https://nofrillztwitter.herokuapp.com/`
 
     console.log("Main.js: The server is:", server)
 

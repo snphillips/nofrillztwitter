@@ -96,7 +96,6 @@ function getTweets(req, res) {
     count: '100',
     // max_id: `${lowestRecentTweetId - 1}`,
     q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg -from:${req.params.searchTerm}`,
-    // q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg`,
     lang: 'en',
     result_type: 'recent',
     //cors experiment
