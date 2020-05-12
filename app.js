@@ -24,7 +24,7 @@ const app = express()
 app.use(cors())
 
 const corsOptions = {
-  origin: 'https://nofrillztweets.surge.sh',
+  origin: 'https://nofrillztweets.surge.sh/',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -117,7 +117,7 @@ function getTweets(req, res) {
 
   })
     .catch((error) => {
-    console.log(error.response)
+    console.log(error)
     res.send(`I can't find any items.`);
   });
 
