@@ -100,7 +100,7 @@ function getTweets(req, res) {
     lang: 'en',
     result_type: 'recent',
     //cors experiment
-    origin: 'https://nofrillztweets.surge.sh'
+    // origin: 'https://nofrillztweets.surge.sh'
    }
 
 

@@ -15,17 +15,17 @@
 
   //===============================
   // The axios call to the server
+  // using the user's inputted query as searchTerm
   //===============================
-  // using the user's inputted query
   function axiosCall(searchTerm){
 
     console.log("Main.js: The search-term is:", searchTerm)
 
+    var server = ''
     // Server when in development:
-    // var server = `http://localhost:3000/tweets/`
-
+    // server = `http://localhost:3000/tweets/`
     // Server when in production:
-    var server = `https://nofrillztwitter.herokuapp.com/tweets/`
+    server = `https://nofrillztwitter.herokuapp.com/tweets/`
 
     console.log("Main.js: The server is:", server)
 
