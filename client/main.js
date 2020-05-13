@@ -25,7 +25,7 @@
     // var server = `http://localhost:3000/tweets/`
 
     // Server when in production:
-    var server = `https://nofrillztwitter.herokuapp.com/`
+    var server = `https://nofrillztwitter.herokuapp.com/tweets/`
 
     console.log("Main.js: The server is:", server)
 
@@ -35,6 +35,7 @@
     .then(function (response) {
 
       console.log("the response is:", response);
+      console.log("the response.data is:", response.data);
 
       //here in the promise, we display the tweets
       displayTweets(response);
