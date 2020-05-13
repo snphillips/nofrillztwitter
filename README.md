@@ -2,6 +2,9 @@
 
 no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node/express backend and javascript front-end. The front-end is in the directory called client.  View the app here: https://nofrillztweets.surge.sh/
 
+<img src="https://i.imgur.com/dofkpVD.png" width="500" alt="screengrab of server">
+<img src="https://i.imgur.com/ZQAZZob.png" width="300" alt="screengrab of server">
+
 ## But Why?
 Q: Isn't this just a _worse_ Twitter client that _does less_ than real twitter?
 
@@ -38,12 +41,6 @@ If you input a search term now, you'll likely get a CORS error. Before this app 
 Remember to turn off the extension when you are done.
 
 Learn more about the CORS error [here.](https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9)
-
-
-<img src="https://i.imgur.com/dofkpVD.png" width="500" alt="screengrab of server">
-<img src="https://i.imgur.com/ZQAZZob.png" width="300" alt="screengrab of server">
-
-
 
 
 ## Made with
