@@ -106,3 +106,18 @@
 
 }
 )();
+
+
+  // ===============================
+  // banana hover
+  // ===============================
+
+// this event listener triggers the function "mouseOverFunction"
+document.getElementById("banana-image").addEventListener("mouseover", mouseOverFunction);
+
+function mouseOverFunction(){
+// this function changes the background of an element.
+  document.querySelector("#banana-image").src = "./images/bananas-yellow.png";
+  console.log("banana change")
+}
+

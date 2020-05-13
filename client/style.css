@@ -18,11 +18,7 @@ body {
 /*========================
 Header
 ==========================*/
-header {
-
-}
-
-.flex {
+.flex-rules {
   display: flex;
   flex-direction: row;
 }
@@ -64,10 +60,7 @@ input#search-term  {
   padding: 4px;
   display: block;
   border-radius: 4px;
-  /* width: 8rem; */
-  /* height: 1rem; */
 }
-
 
 .submit-button {
   color: white;
@@ -80,7 +73,6 @@ input#search-term  {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  /*font-size: 100%;*/
   margin: 10px 0px 20px 0px;
   cursor: pointer;
   /* removes ugly iOS styling */
@@ -108,7 +100,6 @@ Response
 ==========================*/
 p {
   margin: 0;
-  /*font-size: 80%;*/
 }
 
 
@@ -129,12 +120,9 @@ ul {
 }
 
 li {
-  /*margin-top: 15px;*/
   padding: 15px 15px 15px 0;
-  /*background-color: #fff;*/
   animation-duration: .5s;
   animation-name: fadeIn;
-
 }
 
 
@@ -148,7 +136,7 @@ Banana image
   z-index: 2;
 }
 
-.banana-image {
+#banana-image {
   max-width: 14rem;
 }
 
@@ -167,8 +155,7 @@ footer {
   background-color: #f8d703; /* yellow */
   z-index: 1;
   padding: 3rem 1rem 2rem 1rem;
-  /*border: 1px solid green;*/
-
+  box-shadow: 0 0 2rem 1rem #f8d703;
 }
 
 .footer-link a {
@@ -185,7 +172,7 @@ footer {
 @media (max-width: 500px) {
 
   body {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   form {
@@ -196,18 +183,18 @@ footer {
     width: 94%;
   }
 
+  .submit-button-div {
+
+  }
+
   .banana-image {
     max-width: 8rem;
   }
 
   footer {
     font-size: 110%;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
   }
-
-
-
-
 
 
 

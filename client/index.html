@@ -29,9 +29,6 @@
     <link rel="icon" type="image/x-icon" href="./blue-icons/favicon-180.png">
     <link rel="icon" type="image/x-icon" href="./blue-icons/favicon-192.png">
     <link rel="icon" type="image/x-icon" href="./blue-icons/favicon-196.png">
-
-
-
   </head>
 
   <body>
@@ -41,15 +38,11 @@
       <!-- Loading Spinner -->
       <div id="loader"></div>
 
-
-      <header class="flex">
-
+      <header class="flex-rules">
         <div class="h1-div">
           <h1>no frillz twitter</h1>
           <h2>no retweets. no images. just recent tweets.</h2>
         </div>
-
-
       </header>
 
       <!-- Form Section-->
@@ -66,11 +59,13 @@
                placeholder="">
         </input>
 
-        <input class="submit-button"
+        <div class="submit-button-div">
+          <input class="submit-button"
                id="button"
                type="button"
                name="button"
                value="submit"></input>
+        </div>
 
         </form>
 
@@ -80,19 +75,19 @@
 
       <!-- Result -->
       <section id="result">
-
         <!-- The resulting tweets will show up as <li> items inbetween the <ul></ul> below-->
         <ul id="tweet-list"></ul>
-
       </section>
 
 
       <!-- banana div -->
       <div class="banana-container">
-        <img src="./images/bananas-blue.png" alt="blue bananas decorative element" class="banana-image">
+        <img id="banana-image"
+             src="./images/bananas-blue.png"
+             alt="blue bananas decorative element"
+             />
+
       </div>
-
-
 
 
        <!-- Footer -->
