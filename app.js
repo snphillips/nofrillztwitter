@@ -62,9 +62,11 @@ app.get('/', cors(corsOptions), (req, res, next) => {
     msg: 'Hello World!',
     msg2: 'This is CORS-enabled',
   })
+  // is this correct sytax?
   setTimeout( () => {
     res.send('done');
   }, 180000)
+  console.log("hihihih")
 })
 
 app.get('/tweets/:searchTerm', cors(corsOptions), getTweets);
@@ -77,15 +79,6 @@ var T = new Twit({
   access_token:         `${process.env.ACCESS_TOKEN}`,
   access_token_secret:  `${process.env.ACEESS_TOKEN_SECRET}`,
 })
-
-
-// ==================================
-// Some variables
-// ==================================
-// let allTweetsIdArray = [];
-// let lowestRecentTweetId;
-  // Keeping track of the tweets that have coordinates, to potentially map
-// let tweetsArrayWithCoordinates = [];
 
 
 // ==================================
