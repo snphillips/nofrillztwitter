@@ -142,8 +142,6 @@ li {
 Banana image
 ==========================*/
 .banana-container {
-  display: flex;
-  /*border: 1px solid red;*/
   position: fixed;
   bottom: 1rem;
   right: 1rem;
