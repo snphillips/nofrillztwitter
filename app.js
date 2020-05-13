@@ -62,6 +62,9 @@ app.get('/', cors(corsOptions), (req, res, next) => {
     msg: 'Hello World!',
     msg2: 'This is CORS-enabled',
   })
+  setTimeout( () => {
+    res.send('done');
+  }, 180000)
 })
 
 app.get('/tweets/:searchTerm', cors(corsOptions), getTweets);
@@ -98,9 +101,7 @@ function getTweets(req, res) {
     // max_id: `${lowestRecentTweetId - 1}`,
     q: `${req.params.searchTerm} -filter:replies -filter:retweets -filter:media -filter:native_video -filter:links -filter:vine -filter:periscope -filter:images -filter:links -filter:instagram -filter:twimg -from:${req.params.searchTerm}`,
     lang: 'en',
-    result_type: 'recent',
-    //cors experiment
-    // origin: 'https://nofrillztweets.surge.sh'
+    result_type: 'recent'
    }
 
 
