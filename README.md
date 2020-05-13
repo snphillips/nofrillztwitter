@@ -42,8 +42,8 @@ Remember to turn off the extension when you are done.
 Learn more about the CORS error [here.](https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9)
 
 
-<img src="https://i.imgur.com/9R8ZeTH.png" width="500" alt="screengrab of server">
-<img src="https://i.imgur.com/Rm7rTyO.png" width="300" alt="screengrab of server">
+<img src="https://i.imgur.com/dofkpVD.png" width="500" alt="screengrab of server">
+<img src="https://i.imgur.com/ZQAZZob.png" width="300" alt="screengrab of server">
 
 
 
