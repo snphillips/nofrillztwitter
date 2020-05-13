@@ -65,8 +65,8 @@ app.get('/', cors(corsOptions), (req, res, next) => {
   // is this correct sytax?
   setTimeout( () => {
     res.send('done');
+    console.log("hi from setTimeout")
   }, 180000)
-  console.log("hihihih")
 })
 
 app.get('/tweets/:searchTerm', cors(corsOptions), getTweets);
@@ -100,7 +100,7 @@ function getTweets(req, res) {
 
 
   T.get('search/tweets', params, function(err, data, response) {
-    console.log("The query is:", `${req.params.searchTerm}`)
+    console.log("Getting tweets. The query is:", `${req.params.searchTerm}`)
     res.send(data.statuses)
     // parseData(err, data, response)
   })
@@ -116,7 +116,7 @@ function getTweets(req, res) {
       console.log("error.response.data", error.response.data);
       console.log("error.response.status", error.response.status);
       console.log("error.response.headers", error.response.headers);
-    res.send(`I can't find any items.`);
+      res.send(`I can't find any items.`);
   });
 
 }
