@@ -117,7 +117,10 @@ function getTweets(req, res) {
 
   })
     .catch((error) => {
-    console.log(error)
+      console.log("error:", error)
+      console.log("error.response.data", error.response.data);
+      console.log("error.response.status", error.response.status);
+      console.log("error.response.headers", error.response.headers);
     res.send(`I can't find any items.`);
   });
 
