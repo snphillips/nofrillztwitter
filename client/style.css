@@ -136,9 +136,26 @@ Banana image
   z-index: 2;
 }
 
-#banana-image {
+#banana-yellow {
   max-width: 14rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  opacity: 0;
+  transition:opacity 0.5s linear;
 }
+
+#banana-yellow:hover {
+  opacity: 1;
+}
+
+#banana-blue {
+  max-width: 14rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
 
 
 /*========================
