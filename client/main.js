@@ -1,16 +1,23 @@
+
+
+
+
 (function() {
 
+  // When the button is clicked, execute the function lookupQuery
   document.getElementById("button").addEventListener("click", lookupQuery);
+
+
 
 
   // The mega function that does it all when user clicks the submit button
   function lookupQuery() {
 
-  // clears the previous lookup of tweets
-  clearPreviousTweets()
+    // clears the previous lookup of tweets
+    clearPreviousTweets()
 
-  // Whatever value the user selects from dropdown menu
-  var searchTerm = document.getElementById("search-term").value
+    // Whatever value the user types into the search field
+    var searchTerm = document.getElementById("search-term").value
 
 
   //===============================
@@ -34,7 +41,7 @@
 
     .then(function (response) {
 
-      console.log("The response is:", response);
+      // console.log("The response is:", response);
       console.log("The response.data is:", response.data);
 
       //here in the promise, we display the tweets
@@ -106,4 +113,25 @@
 
 }
 )();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

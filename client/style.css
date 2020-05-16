@@ -142,7 +142,7 @@ Banana image
   bottom: 1rem;
   right: 1rem;
   opacity: 0;
-  transition:opacity 0.5s linear;
+  transition:opacity 0.2s linear;
 }
 
 #banana-yellow:hover {

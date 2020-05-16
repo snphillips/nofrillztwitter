@@ -50,23 +50,29 @@
 
 
         <!-- Form -->
-        <form class="" id="form">
+        <!-- onSubmit="return false;" is so form submits on 'enter' -->
+        <form class=""
+              id="form"
+              onSubmit="return false;"
+              >
+          <input id="search-term"
+                 type=""
+                 name="insert search term"
+                 value=""
+                 placeholder=""
+                 >
+          </input>
 
-        <input id="search-term"
-               type=""
-               name="insert search term"
-               value=""
-               placeholder="">
-        </input>
-
-        <div class="submit-button-div">
-          <input class="submit-button"
-               id="button"
-               type="button"
-               name="button"
-               value="submit"></input>
-        </div>
-
+          <div class="submit-button-div">
+            <input class="submit-button"
+                   id="button"
+                   type="submit"
+                   name="button"
+                   value="submit"
+                   onClick=""
+                   >
+            </input>
+          </div>
         </form>
 
       </section>
@@ -114,8 +120,14 @@
    </div>
 
 
-      <script src="main.js"></script>
 
-  </body>
 
+<script src="main.js"></script>
+
+</body>
 </html>
+
+
+
+
+
