@@ -25,7 +25,7 @@ body {
 
 
 .spinning-banana {
-  animation: rotation 1.5s infinite linear;
+  animation: rotation 1.2s infinite linear;
 }
 
 @keyframes rotation {
@@ -216,6 +216,11 @@ footer {
 
   body {
     padding: 1rem;
+  }
+
+  #loader {
+    top: 50%;
+    left: 40%;
   }
 
   form {
