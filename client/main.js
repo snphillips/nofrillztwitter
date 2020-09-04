@@ -10,6 +10,7 @@
 
 
 
+  //===============================
   // The mega function that does it all when user clicks the submit button
   function lookupQuery() {
 
@@ -76,6 +77,15 @@
   // ===============================
   function displayTweets(response){
 
+
+    // if there are no tweets
+    // not working
+    if (response.data.length === 0) {
+
+        let noTweets = document.querySelector("#result");
+        noTweets.innerHTML = "no tweets with that search term"
+    }
+
     // console.log(`response.data[0].text:`, response.data[0].text)
 
     for (var i = 0; i < response.data.length; i++) {
@@ -84,33 +94,29 @@
         return document.createElement(element);
       }
 
-      function append(parent, el) {
-        return parent.appendChild(el);
+      function append(parent, element) {
+        return parent.appendChild(element);
       }
 
-      var ul = document.getElementById('tweet-list');
+      // Now using the functions we just described above...
       var li = listSingleTweet('li');
       var span = listSingleTweet('span');
+
+      var ul = document.getElementById('tweet-list');
 
       var tweetBody = response.data[i].text
 
 
       // if there are tweets
       if (tweetBody.includes(`${searchTerm}`)) {
-        span.innerHTML = `${response.data[i].text}`
-
         append(li, span);
+        span.innerHTML = `${response.data[i].text}`
         append(ul, li);
-
-        }
       }
 
    }
-
-
-
 }
-
+}
 }
 )();
 
