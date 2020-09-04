@@ -29,6 +29,9 @@
 
     console.log("Main.js: The search-term is:", searchTerm)
 
+    // show the spinner
+    document.querySelector("#loader").style.display = "block";
+
     var server = ''
     // when in development:
     // server = `http://localhost:3000/tweets/`
@@ -41,6 +44,9 @@
 
 
     .then(function (response) {
+
+      // The tweets are ready, so hide the spinner
+      document.querySelector("#loader").style.display = "none";
 
       // console.log("The response is:", response);
       console.log("The response.data is:", response.data);

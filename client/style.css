@@ -15,6 +15,28 @@ body {
   flex-direction: column;
 }
 
+
+#loader {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+
+
+.spinning-banana {
+  animation: rotation 1.5s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 /*========================
 Header
 ==========================*/
