@@ -63,6 +63,9 @@
     // Removes an element from the document
     var tweetsList = document.getElementById('tweet-list');
 
+    console.log("removing previous tweets")
+
+
     // As long as <ul> has a child node, remove it
    while (tweetsList.hasChildNodes()) {
      tweetsList.removeChild(tweetsList.firstChild);
@@ -79,11 +82,13 @@
 
 
     // if there are no tweets
-    // not working
+    // instead of inserting the list of tweets into #tweet-list,
+    // insert the "no tweet" message
     if (response.data.length === 0) {
 
-        let noTweets = document.querySelector("#result");
-        noTweets.innerHTML = "no tweets with that search term"
+        // let noTweets = document.querySelector("#result");
+        let noTweets = document.querySelector("#tweet-list");
+        noTweets.innerHTML = "There are no tweets with that search term."
     }
 
     // console.log(`response.data[0].text:`, response.data[0].text)

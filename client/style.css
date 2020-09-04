@@ -180,13 +180,17 @@ footer {
   text-decoration: none;
 }
 
+.fa-github {
+  font-size: 110%;
+}
+
 
 
 
 /*=================================*/
-/*Very Small devices (500px and smaller) media query*/
+/* Small devices (600px and smaller) media query*/
 /*=================================*/
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 
   body {
     padding: 1rem;
