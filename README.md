@@ -1,6 +1,6 @@
-# no frillz twitter
+# no frillz tweetz
 
-no frillz twitter is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node/express backend and javascript front-end. The front-end is in the directory called client.  View the app here: https://nofrillztweets.surge.sh/
+no frillz tweetz is a simple twitter client that returns recent tweets based on the user's search query. This repo contains both the node/express back-end and javascript front-end. The front-end is in the directory called client.  View the app here: https://nofrillztweets.surge.sh/
 
 <img src="https://i.imgur.com/dofkpVD.png" width="500" alt="screengrab of server">
 <img src="https://i.imgur.com/ZQAZZob.png" width="300" alt="screengrab of server">
@@ -23,11 +23,11 @@ To get the node server running, in your terminal type:
 `nodemon app.js`
 
 Open a browser window to http://localhost:3000/ where you should see a "Hello World" message.
-To test if you are connecting to the twitter API, vist http://localhost:3000/tweets/bananas. You should see a json with tweets about bananas.
+To test if you are connecting to the twitter API, visit http://localhost:3000/tweets/bananas. You should see a json with tweets about bananas.
 
 <img src="https://i.imgur.com/3bvGapG.png" width="500" alt="screengrab of server">
      
-You can try that with any search term apended after /tweets/.
+You can try that with any search term appended after /tweets/.
 
 
 To view the front end, open *index.html* in a browser. 
@@ -35,6 +35,6 @@ If using a mac, right-click on index.html, select "Reveal in Finder", then doubl
 
 
 ## Made with
-- node express server (backend)
+- node express server (back-end)
 - javascript client (front end)
 - Twit API
